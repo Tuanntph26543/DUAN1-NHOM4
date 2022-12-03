@@ -4,40 +4,34 @@
  */
 package poly.nhom4.repository;
 
+import poly.nhom4.domainmodel.NguyenLieu;
+import poly.nhom4.hibernateconfig.HibernateUtil;
 import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import poly.nhom4.domainmodel.Ban;
-import poly.nhom4.domainmodel.HoaDon;
-import poly.nhom4.hibernateconfig.HibernateUtil;
 
 /**
  *
- * @author ACER
+ * @author My PC
  */
-public class BanRepository {
-    public Ban getBanByMa(int ma) {
+public class NguyenLieuRepository {
+
+    public List<NguyenLieu> getAll() {
+
         Session session = HibernateUtil.getFACTORY().openSession();
-        Query query = session.createQuery("From Ban Where MABAN =: MABAN");// truy vấn trên entity(HQL)
-        query.setParameter("MABAN", ma);
-        Ban hd = (Ban) query.getSingleResult();
-        return hd;
-    }
-    
-    public List<Ban> getAll() {
-        Session session = HibernateUtil.getFACTORY().openSession();
-        String fromTable = "FROM Ban"; // HQL
-        Query query = session.createQuery(fromTable, Ban.class);
-        List<Ban> lists = query.getResultList();
+
+        String fromTable = "FROM NguyenLieu"; // HQL
+        Query query = session.createQuery(fromTable, NguyenLieu.class);
+        List<NguyenLieu> lists = query.getResultList();
         return lists;
     }
 
-    public Boolean add(Ban ban) {
+    public Boolean add(NguyenLieu nguyenLieu) {
         Transaction transaction = null;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
-            session.save(ban);
+            session.save(nguyenLieu);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -46,13 +40,12 @@ public class BanRepository {
         return null;
     }
 
-    public Boolean update(Ban ban) {
+    public Boolean update(NguyenLieu nguyenLieu) {
         Transaction transaction = null;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
-            session.update(ban);
+            session.update(nguyenLieu);
             transaction.commit();
-            getAll();
             return true;
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -60,11 +53,11 @@ public class BanRepository {
         return null;
     }
 
-    public Boolean delete(Ban ban) {
+    public Boolean delete(NguyenLieu nguyenLieu) {
         Transaction transaction = null;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
-            session.delete(ban);
+            session.delete(nguyenLieu);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -72,5 +65,12 @@ public class BanRepository {
         }
         return null;
     }
-    
+
+    public static void main(String[] args) {
+        List<NguyenLieu> lists = new NguyenLieuRepository().getAll();
+        for (NguyenLieu x : lists) {
+            System.out.println(x.toString());
+        }
+    }
+
 }
