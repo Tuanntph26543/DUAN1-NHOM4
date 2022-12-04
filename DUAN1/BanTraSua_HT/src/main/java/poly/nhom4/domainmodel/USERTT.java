@@ -35,7 +35,7 @@ public class USERTT {
     private String GIOITINH;
 
     @Column(name = "NAMSINH")
-    private String NAMSINH;
+    private Integer NAMSINH;
 
     @Column(name = "DIACHI")
     private String DIACHI;
@@ -62,7 +62,7 @@ public class USERTT {
     public USERTT() {
     }
 
-    public USERTT(int MANV, String HOTEN, String GIOITINH, String NAMSINH, String DIACHI, String CCCD, String SDT, String TAIKHOAN, String MATKHAU, int TRANGTHAI, ChucVu CHUCVU) {
+    public USERTT(int MANV, String HOTEN, String GIOITINH, Integer NAMSINH, String DIACHI, String CCCD, String SDT, String TAIKHOAN, String MATKHAU, int TRANGTHAI, ChucVu CHUCVU) {
         this.MANV = MANV;
         this.HOTEN = HOTEN;
         this.GIOITINH = GIOITINH;
@@ -100,11 +100,11 @@ public class USERTT {
         this.GIOITINH = GIOITINH;
     }
 
-    public String getNAMSINH() {
+    public Integer getNAMSINH() {
         return NAMSINH;
     }
 
-    public void setNAMSINH(String NAMSINH) {
+    public void setNAMSINH(Integer NAMSINH) {
         this.NAMSINH = NAMSINH;
     }
 
