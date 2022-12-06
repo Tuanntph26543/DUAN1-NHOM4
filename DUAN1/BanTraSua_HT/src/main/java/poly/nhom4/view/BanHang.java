@@ -1069,7 +1069,6 @@ public class BanHang extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-
         int row = tbHoaDon1.getSelectedRow();
         Integer maHD = (Integer) tbHoaDon1.getValueAt(row, 0);
         qLHDService.updateHD(maHD);
@@ -1092,6 +1091,7 @@ public class BanHang extends javax.swing.JFrame {
         Integer int1 = Integer.valueOf(lblMaNVLay.getText());
         HoaDonView bh = new HoaDonView(int1);
         bh.show();
+        bh.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jLabel4MouseClicked
 
@@ -1141,7 +1141,6 @@ public class BanHang extends javax.swing.JFrame {
         HDCTReponse hDCTReponse = new HDCTReponse();
         hDCTReponse.setSoLuong(soLuong2);
         hDCTReponse.setDonGia(donGia);
-        hDCTReponse.setMaBan(1);
         hDCTReponse.setMaHD(maHD);
         hDCTReponse.setMaSp(maSP);
         boolean kq = false;
@@ -1219,6 +1218,7 @@ public class BanHang extends javax.swing.JFrame {
         // TODO add your handling code here:
         DangNhapForm bh = new DangNhapForm();
         bh.show();
+        bh.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -1229,7 +1229,6 @@ public class BanHang extends javax.swing.JFrame {
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         // TODO add your handling code here:
         Integer int1 = Integer.valueOf(lblMaNVLay.getText());
-
         KhuyenMaiView bh = new KhuyenMaiView(int1);
         bh.show();
         this.dispose();
@@ -1241,6 +1240,7 @@ public class BanHang extends javax.swing.JFrame {
 
         ThongKeView bh = new ThongKeView(int1);
         bh.show();
+        bh.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jLabel7MouseClicked
 
@@ -1250,6 +1250,7 @@ public class BanHang extends javax.swing.JFrame {
 
         NguyenLieuNCCView bh = new NguyenLieuNCCView(int1);
         bh.show();
+        bh.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jLabel12MouseClicked
 
@@ -1258,6 +1259,7 @@ public class BanHang extends javax.swing.JFrame {
         Integer int1 = Integer.valueOf(lblMaNVLay.getText());
         BanHang bh = new BanHang(int1);
         bh.show();
+        bh.setLocationRelativeTo(null);
         this.dispose();
 
     }//GEN-LAST:event_jLabel3MouseClicked

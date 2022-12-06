@@ -37,8 +37,7 @@ public class HDCTIplm implements HDCTService {
     public boolean createHDCT(HDCTReponse hoaDon) {
         return hDCTRepository.createHDCT(new HoaDonChiTiet(hoaDon.getSoLuong(),
                 hoaDon.getDonGia(), hoaDonRepository.getHDByMa(hoaDon.getMaHD()),
-                sanPhamRepository.getSPByMa(hoaDon.getMaSp()),
-                banRepository.getBanByMa(hoaDon.getMaBan())));
+                sanPhamRepository.getSPByMa(hoaDon.getMaSp())));
     }
 
     @Override
