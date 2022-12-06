@@ -17,6 +17,8 @@ import poly.nhom4.domainmodel.HoaDon;
 import poly.nhom4.domainmodel.HoaDonChiTiet;
 import poly.nhom4.domainmodel.KhachHang;
 import poly.nhom4.domainmodel.KhuyenMai;
+import poly.nhom4.domainmodel.NguyenLieu;
+import poly.nhom4.domainmodel.NhaCungCap;
 import poly.nhom4.domainmodel.SanPham;
 import poly.nhom4.domainmodel.USERTT;
 
@@ -34,9 +36,9 @@ public class HibernateUtil {
         Properties properties = new Properties();
         properties.put(Environment.DIALECT, "org.hibernate.dialect.SQLServerDialect");
         properties.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=QLBANTS");
+        properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=qlbts_ht01");
         properties.put(Environment.USER, "sa");
-        properties.put(Environment.PASS, "hoaphuong190723");
+        properties.put(Environment.PASS, "123456");
         properties.put(Environment.SHOW_SQL, "true");
 
         conf.setProperties(properties);
@@ -45,7 +47,8 @@ public class HibernateUtil {
         conf.addAnnotatedClass(HoaDon.class);
         conf.addAnnotatedClass(Ban.class);
         conf.addAnnotatedClass(HoaDonChiTiet.class);
-
+        conf.addAnnotatedClass(NguyenLieu.class);
+        conf.addAnnotatedClass(NhaCungCap.class);
         conf.addAnnotatedClass(USERTT.class);
         conf.addAnnotatedClass(KhachHang.class);
         conf.addAnnotatedClass(ChucVu.class);

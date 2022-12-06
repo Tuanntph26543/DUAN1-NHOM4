@@ -50,7 +50,7 @@ public class QuenMatKhauForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Goudy Stout", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel1.setForeground(new java.awt.Color(102, 255, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("quen mat khau");
 

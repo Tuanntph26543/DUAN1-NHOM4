@@ -4,6 +4,7 @@
  */
 package poly.nhom4.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
@@ -31,7 +32,7 @@ public class HoaDonRepository {
         List<HoaDon> lists = query.getResultList();
         return lists;
     }
-
+  
     public List<HoaDon> getAll1() {
         String fromTable = "FROM HoaDon ";
         Session session = HibernateUtil.getFACTORY().openSession();

@@ -38,7 +38,6 @@ public class DoiMatKhauForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtTaiKhoan = new javax.swing.JTextField();
-        btnQuayLai = new javax.swing.JButton();
         btnCapNhatMK = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -50,24 +49,15 @@ public class DoiMatKhauForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Goudy Stout", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel1.setForeground(new java.awt.Color(102, 255, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("quen mat khau");
+        jLabel1.setText("DOI mat khau");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Tài khoản:");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Mật khẩu:");
-
-        btnQuayLai.setBackground(new java.awt.Color(204, 153, 255));
-        btnQuayLai.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnQuayLai.setText("Quay lại");
-        btnQuayLai.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnQuayLaiActionPerformed(evt);
-            }
-        });
 
         btnCapNhatMK.setBackground(new java.awt.Color(204, 153, 255));
         btnCapNhatMK.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -97,32 +87,31 @@ public class DoiMatKhauForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtTaiKhoan, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                    .addComponent(txtXacNhanMatKhauMoi)
-                    .addComponent(txtMatKhauMoi)
-                    .addComponent(txtMatKhau))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 171, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(125, 125, 125))
             .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(btnQuayLai)
-                .addGap(74, 74, 74)
-                .addComponent(btnCapNhatMK)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                .addComponent(btnThoat)
-                .addGap(73, 73, 73))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtTaiKhoan, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                            .addComponent(txtXacNhanMatKhauMoi)
+                            .addComponent(txtMatKhauMoi)
+                            .addComponent(txtMatKhau)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(155, 155, 155)
+                        .addComponent(btnCapNhatMK)
+                        .addGap(85, 85, 85)
+                        .addComponent(btnThoat)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,7 +136,6 @@ public class DoiMatKhauForm extends javax.swing.JFrame {
                     .addComponent(txtXacNhanMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnQuayLai)
                     .addComponent(btnCapNhatMK)
                     .addComponent(btnThoat))
                 .addGap(35, 35, 35))
@@ -158,22 +146,8 @@ public class DoiMatKhauForm extends javax.swing.JFrame {
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         // TODO add your handling code here:
-        int chon = JOptionPane.showConfirmDialog(this, "Bạn có muốn thoát không ??", "Thoát", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (chon == JOptionPane.YES_OPTION) {
-            System.exit(0);
-        }
+      this.dispose();
     }//GEN-LAST:event_btnThoatActionPerformed
-
-    private void btnQuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuayLaiActionPerformed
-        // TODO add your handling code here:
-        int chon = JOptionPane.showConfirmDialog(this, "Bạn có muốn Quay lại Đăng Nhập không ??", "Quay lại", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (chon == JOptionPane.YES_OPTION) {
-            DangNhapForm dn = new DangNhapForm();
-            dn.setLocationRelativeTo(null);
-            dn.setVisible(true);
-            this.dispose();
-        }
-    }//GEN-LAST:event_btnQuayLaiActionPerformed
 
     private void btnCapNhatMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatMKActionPerformed
         // TODO add your handling code here:
@@ -253,7 +227,6 @@ public class DoiMatKhauForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhatMK;
-    private javax.swing.JButton btnQuayLai;
     private javax.swing.JButton btnThoat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
