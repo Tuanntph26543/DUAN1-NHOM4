@@ -13,6 +13,20 @@ import poly.nhom4.reponse.SanPhamReponse;
  * @author ACER
  */
 public interface QuanLySPService {
-    List<SanPhamReponse> getAll();
+
+    List<SanPhamReponse> getAllSanPham();
+
+    List<SanPhamReponse> getAllByTT();
+    
+    List<SanPhamReponse> getAllByTT2();
+
+    SanPham getSPByMa(int ma);
+
+    String add(SanPham sp);
+
+    String update(SanPham maSP);
+
+    String delete(SanPham sp);
+
     List<SanPhamReponse> getSPByTen(String tenSP);
 }

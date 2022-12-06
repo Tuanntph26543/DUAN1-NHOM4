@@ -11,6 +11,7 @@ import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import poly.nhom4.domainmodel.HoaDon;
+import poly.nhom4.domainmodel.KhuyenMai;
 import poly.nhom4.domainmodel.SanPham;
 import poly.nhom4.hibernateconfig.HibernateUtil;
 
@@ -40,6 +41,22 @@ public class SanPhamRepository {
         return false;
     }
 
+    public List<SanPham> getAllByTT() {
+        String sql = "from SANPHAM WHERE TRANGTHAI=1";
+        Session session = HibernateUtil.getFACTORY().openSession();
+        Query query = session.createQuery(sql, SanPham.class);
+        List<SanPham> lists = query.getResultList();
+        return lists;
+    }
+
+    public List<SanPham> getAllByTT2() {
+        String sql = "from SANPHAM WHERE TRANGTHAI=0";
+        Session session = HibernateUtil.getFACTORY().openSession();
+        Query query = session.createQuery(sql, SanPham.class);
+        List<SanPham> lists = query.getResultList();
+        return lists;
+    }
+    
     public SanPham getSPByMa(int ma) {
         Session session = HibernateUtil.getFACTORY().openSession();
         Query query = session.createQuery("From SanPham Where MASP =: MASP");// truy vấn trên entity(HQL)
@@ -53,6 +70,65 @@ public class SanPhamRepository {
         Query query = session.createQuery("From SanPham Where TENSP =: TENSP");// truy vấn trên entity(HQL)
         query.setParameter("TENSP", tenSP);
         List<SanPham> list = query.getResultList();
+        return list;
+    }
+    
+      public Boolean add(SanPham sp) {
+        Transaction transaction = null;
+        try {
+            
+            Session session = HibernateUtil.getFACTORY().openSession();
+            transaction = session.beginTransaction();
+            session.save(sp);
+            transaction.commit();
+            getAll();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return false;
+    }
+
+    public Boolean update(SanPham sp) {
+        Transaction transaction = null;
+        try (
+            
+            Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            session.update(sp);
+            transaction.commit();
+            getAll();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return false;
+    }
+
+    public Boolean delete(SanPham sp) {
+        Transaction transaction = null;
+        try {
+            Session session = HibernateUtil.getFACTORY().openSession();
+            transaction = session.beginTransaction();
+            session.delete(sp);
+            transaction.commit();
+            getAll();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return false;
+    }
+
+    public List<Integer> getMaAll() {
+        String fromTable = "FROM KhuyenMai ";
+        Session session = HibernateUtil.getFACTORY().openSession();
+        Query query = session.createQuery(fromTable, KhuyenMai.class);
+        List<Integer> list = new ArrayList<>();
+        List<KhuyenMai> lists = query.getResultList();
+        for (KhuyenMai x : lists) {
+            list.add(x.getMAKM());
+        }
         return list;
     }
 

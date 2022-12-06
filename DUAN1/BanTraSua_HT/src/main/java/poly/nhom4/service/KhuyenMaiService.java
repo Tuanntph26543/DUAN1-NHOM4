@@ -4,7 +4,9 @@
  */
 package poly.nhom4.service;
 
+import java.math.BigDecimal;
 import java.util.List;
+import poly.nhom4.domainmodel.KhuyenMai;
 import poly.nhom4.reponse.KhuyenMaiReponse;
 
 /**
@@ -28,4 +30,10 @@ public interface KhuyenMaiService {
     String update(KhuyenMaiReponse km);
 
     String delete(KhuyenMaiReponse km);
+    
+     List<Integer> getMaAll();
+    
+     BigDecimal getsoTienKM(int maKM);
+     KhuyenMai getKMByMa(Integer maKM);
+     int getMa(BigDecimal soTienKM);
 }

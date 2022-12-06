@@ -95,7 +95,7 @@ public class BanHang extends javax.swing.JFrame {
     double tongTienBanDuoc = 0;
 
     public void addrow() {
-        List<SanPhamReponse> list = quanLySPService.getAll();
+        List<SanPhamReponse> list = quanLySPService.getAllSanPham();
         defaultTableModel = (DefaultTableModel) tbSanPham.getModel();
         defaultTableModel.setRowCount(0);
         for (SanPhamReponse x : list) {

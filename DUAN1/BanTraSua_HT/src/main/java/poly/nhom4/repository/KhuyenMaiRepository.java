@@ -4,6 +4,8 @@
  */
 package poly.nhom4.repository;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
@@ -41,6 +43,23 @@ public class KhuyenMaiRepository {
 
     }
 
+    public KhuyenMai getKMByMa(Integer maKM) {
+        String sql = "FROM KhuyenMai WHERE MAKM = :MAKM";
+        Query query = session.createQuery(sql, KhuyenMai.class);
+        query.setParameter("MAKM", maKM);
+        KhuyenMai khuyenMai = (KhuyenMai) query.getSingleResult();
+        return khuyenMai;
+
+    }
+
+    public int getMa(BigDecimal soTienKM) {
+        String sql = "FROM KhuyenMai WHERE SOTIENKM = :SOTIENKM";
+        Query query = session.createQuery(sql, KhuyenMai.class);
+        query.setParameter("SOTIENKM", soTienKM);
+        KhuyenMai khuyenMai = (KhuyenMai) query.getSingleResult();
+        return khuyenMai.getMAKM();
+    }
+
     public List<KhuyenMai> getAllByTT() {
         String sql = "from KhuyenMai WHERE TRANGTHAI=1";
         Session session = HibernateUtil.getFACTORY().openSession();
@@ -48,7 +67,7 @@ public class KhuyenMaiRepository {
         List<KhuyenMai> lists = query.getResultList();
         return lists;
     }
-    
+
     public List<KhuyenMai> getAllByTT2() {
         String sql = "from KhuyenMai WHERE TRANGTHAI=0";
         Session session = HibernateUtil.getFACTORY().openSession();
@@ -72,6 +91,7 @@ public class KhuyenMaiRepository {
         }
         return false;
     }
+
     public Boolean add(KhuyenMai km) {
         Transaction transaction = null;
         try {
@@ -113,6 +133,30 @@ public class KhuyenMaiRepository {
         return null;
     }
 
-    public static void main(String[] args) {
+    public List<Integer> getMaAll() {
+        String fromTable1 = "FROM KhuyenMai ";
+        Session session1 = HibernateUtil.getFACTORY().openSession();
+        Query query = session1.createQuery(fromTable1, KhuyenMai.class);
+        List<Integer> list = new ArrayList<>();
+        List<KhuyenMai> lists = query.getResultList();
+        for (KhuyenMai x : lists) {
+            list.add(x.getMAKM());
+        }
+        return list;
     }
+
+    public BigDecimal getsoTienKM(int maKM) {
+        String fromTable2 = "FROM KhuyenMai Where MAKM =:MAKM";
+        Session session2 = HibernateUtil.getFACTORY().openSession();
+        Query query = session2.createQuery(fromTable2, KhuyenMai.class);
+        query.setParameter("MAKM", maKM);
+        KhuyenMai lists = (KhuyenMai) query.getSingleResult();
+        return lists.getSOTIENKM();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new KhuyenMaiRepository().getsoTienKM(1));
+    }
+
+ 
 }

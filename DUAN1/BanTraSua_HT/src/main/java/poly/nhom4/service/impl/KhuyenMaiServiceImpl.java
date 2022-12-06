@@ -103,4 +103,27 @@ public class KhuyenMaiServiceImpl implements KhuyenMaiService {
     public boolean NgungAll(int maKM, int trangThai) {
         return repo.updateKM(maKM, trangThai);      
     }
+
+    @Override
+    public List<Integer> getMaAll() {
+        return repo.getMaAll();  
+    }
+
+    
+    @Override
+    public BigDecimal getsoTienKM(int maKM) {
+        return repo.getsoTienKM(maKM);
+    }
+
+    @Override
+    public KhuyenMai getKMByMa(Integer maKM) {
+       return repo.getKMByMa(maKM);
+    }
+
+    @Override
+    public int getMa(BigDecimal soTienKM) {
+       return repo.getMa(soTienKM);
+    }
+    
+    
 }
