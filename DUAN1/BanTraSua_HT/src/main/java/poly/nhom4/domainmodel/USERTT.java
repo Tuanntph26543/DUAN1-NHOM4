@@ -26,7 +26,7 @@ public class USERTT {
     @Id
     @Column(name = "MANV")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int MANV;
+    private Integer MANV;
 
     @Column(name = "HOTEN")
     private String HOTEN;
@@ -53,7 +53,7 @@ public class USERTT {
     private String MATKHAU;
 
     @Column(name = "TRANGTHAI")
-    private int TRANGTHAI;
+    private Integer TRANGTHAI;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MACV", referencedColumnName = "MACV")
@@ -62,7 +62,7 @@ public class USERTT {
     public USERTT() {
     }
 
-    public USERTT(int MANV, String HOTEN, String GIOITINH, Integer NAMSINH, String DIACHI, String CCCD, String SDT, String TAIKHOAN, String MATKHAU, int TRANGTHAI, ChucVu CHUCVU) {
+    public USERTT(Integer MANV, String HOTEN, String GIOITINH, Integer NAMSINH, String DIACHI, String CCCD, String SDT, String TAIKHOAN, String MATKHAU, Integer TRANGTHAI, ChucVu CHUCVU) {
         this.MANV = MANV;
         this.HOTEN = HOTEN;
         this.GIOITINH = GIOITINH;
@@ -80,7 +80,7 @@ public class USERTT {
         return MANV;
     }
 
-    public void setMANV(int MANV) {
+    public void setMANV(Integer MANV) {
         this.MANV = MANV;
     }
 
@@ -152,7 +152,7 @@ public class USERTT {
         return TRANGTHAI;
     }
 
-    public void setTRANGTHAI(int TRANGTHAI) {
+    public void setTRANGTHAI(Integer TRANGTHAI) {
         this.TRANGTHAI = TRANGTHAI;
     }
 

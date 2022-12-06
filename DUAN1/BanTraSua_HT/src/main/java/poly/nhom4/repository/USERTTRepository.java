@@ -19,9 +19,6 @@ import poly.nhom4.hibernateconfig.HibernateUtil;
  */
 public class USERTTRepository {
 
-    private Session session = HibernateUtil.getFACTORY().openSession();
-    private String fromTable = "From USERTT";
-
     public USERTT getUSerByMaNV(int maNV) {
         Session x = HibernateUtil.getFACTORY().openSession();
         Query query = x.createQuery("From USERTT Where MANV =: MANV");// truy vấn trên entity(HQL)
@@ -31,12 +28,16 @@ public class USERTTRepository {
     }
 
     public List<USERTT> getAll() {
+        Session session = HibernateUtil.getFACTORY().openSession();
+        String fromTable = "From USERTT";
         javax.persistence.Query query = session.createQuery(fromTable, USERTT.class);
         List<USERTT> lst = query.getResultList();
         return lst;
     }
 
     public USERTT dangNhap(String taikhoan) {
+        Session session = HibernateUtil.getFACTORY().openSession();
+        String fromTable = "From USERTT";
         String sql = fromTable + " where taikhoan =: taikhoan ";
         javax.persistence.Query query = session.createQuery(fromTable, USERTT.class);
         query.setParameter("TaiKhoan", taikhoan);

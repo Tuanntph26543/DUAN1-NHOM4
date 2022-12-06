@@ -113,4 +113,30 @@ public class UserTTServiceIplm implements UserTTService {
         }
     }
 
+    @Override
+    public boolean delete(UserTTReponse userReponse) {
+        try {
+            USERTT user = new USERTT();
+            user.setMANV(userReponse.getMaNV());
+            user.setCCCD(userReponse.getCccd());
+            user.setCHUCVU(userReponse.getChucVu());
+            user.setDIACHI(userReponse.getDiaChi());
+            user.setGIOITINH(userReponse.getGioiTinh());
+            user.setHOTEN(userReponse.getHoTen());
+            user.setMATKHAU(userReponse.getMatKhau());
+            user.setNAMSINH(userReponse.getNamSinh());
+            user.setSDT(userReponse.getSdt());
+            user.setTAIKHOAN(userReponse.getTaiKhoan());
+            user.setTRANGTHAI(1);
+            boolean kq = userTTRepository.delete(user);
+            if (kq == true) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 }
