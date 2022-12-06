@@ -147,6 +147,7 @@ public class XacNhanCa extends javax.swing.JFrame {
         giaoCaService.createGC(gc);
         BanHang bh = new BanHang(ma1);
         bh.show();
+        bh.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

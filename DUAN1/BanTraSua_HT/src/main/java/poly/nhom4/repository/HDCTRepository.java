@@ -41,7 +41,7 @@ public class HDCTRepository {
 
     public List<Integer> getBanByMaHD(int maHD) {
         Session session = HibernateUtil.getFACTORY().openSession();
-        Query query = session.createQuery(" From HoaDonChiTiet Where MAHD =: MAHD ");// truy vấn trên entity(HQL)
+        Query query = session.createQuery(" From HoaDonChiTiet Where MAHD =: MAHD AND MABAN IS NOT NULL ");// truy vấn trên entity(HQL)
         query.setParameter("MAHD", maHD);
         List<Integer> list1 = new ArrayList<>();
         List<HoaDonChiTiet> list = query.getResultList();

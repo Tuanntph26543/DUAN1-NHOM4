@@ -64,13 +64,14 @@ public class HoaDonChiTiet {
         this.hoaDon = hoaDon;
         this.ban = ban;
     }
-    public HoaDonChiTiet( int SOLUONG, BigDecimal DONGIA, HoaDon hoaDon, SanPham sanPham, Ban ban) {
+    public HoaDonChiTiet( int SOLUONG, BigDecimal DONGIA, HoaDon hoaDon, SanPham sanPham) {
         this.SOLUONG = SOLUONG;
         this.DONGIA = DONGIA;
         this.hoaDon = hoaDon;
         this.sanPham = sanPham;
-        this.ban = ban;
     }
+
+ 
     
     
 }

@@ -836,7 +836,6 @@ public class HoaDonView extends javax.swing.JFrame {
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         // TODO add your handling code here:
         Integer int1 = Integer.valueOf(lblMaNVLay.getText());
-
         ThongKeView bh = new ThongKeView(int1);
         bh.show();
         this.dispose();
