@@ -20,46 +20,27 @@ import javax.persistence.Table;
 @Table
 @Entity
 public class KhuyenMai {
-
+    
+    
     @Id
     @Column(name = "MAKM")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int MAKM;
 
-    @Column(name = "TENKM")
+     @Column(name = "TENKM")
     private String TENKM;
-
+    
     @Column(name = "SOTIENKM")
     private BigDecimal SOTIENKM;
 
     @Column(name = "NGAYBD")
     private Date NGAYBD;
 
-    @Column(name = "NGAYKT")
+     @Column(name = "NGAYKT")
     private Date NGAYKT;
-
-    @Column(name = "TRANGTHAI")
+     
+      @Column(name = "TRANGTHAI")
     private int TRANGTHAI;
-
-    public KhuyenMai() {
-    }
-
-    public KhuyenMai(int MAKM, String TENKM, BigDecimal SOTIENKM, Date NGAYBD, Date NGAYKT, int TRANGTHAI) {
-        this.MAKM = MAKM;
-        this.TENKM = TENKM;
-        this.SOTIENKM = SOTIENKM;
-        this.NGAYBD = NGAYBD;
-        this.NGAYKT = NGAYKT;
-        this.TRANGTHAI = TRANGTHAI;
-    }
-
-    public KhuyenMai(String TENKM, BigDecimal SOTIENKM, Date NGAYBD, Date NGAYKT, int TRANGTHAI) {
-        this.TENKM = TENKM;
-        this.SOTIENKM = SOTIENKM;
-        this.NGAYBD = NGAYBD;
-        this.NGAYKT = NGAYKT;
-        this.TRANGTHAI = TRANGTHAI;
-    }
 
     public int getMAKM() {
         return MAKM;
@@ -109,4 +90,6 @@ public class KhuyenMai {
         this.TRANGTHAI = TRANGTHAI;
     }
 
+   
+      
 }

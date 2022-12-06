@@ -14,17 +14,16 @@ public class BanReponse {
 
     private int maBan;
     private String tenBan;
-    private int soLuong;
+    private Integer soNguoiMax;
     private int trangThai;
 
     public BanReponse() {
     }
 
-    
     public BanReponse(Ban ban) {
         this.maBan = ban.getMaBan();
         this.tenBan = ban.getTenBan();
-        this.soLuong = ban.getSoNguoiNgoiMax();
+        this.soNguoiMax = ban.getSoNguoiNgoiMax();
         this.trangThai = ban.getTrangThai();
     }
 
@@ -44,12 +43,12 @@ public class BanReponse {
         this.tenBan = tenBan;
     }
 
-    public int getSoLuong() {
-        return soLuong;
+    public Integer getSoNguoiMax() {
+        return soNguoiMax;
     }
 
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
+    public void setSoNguoiMax(Integer soNguoiMax) {
+        this.soNguoiMax = soNguoiMax;
     }
 
     public int getTrangThai() {
@@ -59,12 +58,12 @@ public class BanReponse {
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
-public String layTrangThai(int trangThai){
-    if (trangThai==0) {
-        return "Còn Trống";
-    } else {
-        return "Có Người";
+
+    public String trangThai() {
+        if (trangThai == 1) {
+            return "Có người";
+        }
+        return "Còn trống";
     }
-}
-    
+
 }

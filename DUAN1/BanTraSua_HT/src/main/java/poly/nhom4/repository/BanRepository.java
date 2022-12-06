@@ -39,6 +39,7 @@ public class BanRepository {
         }
         return false;
     }
+
     public List<Ban> getBanConTrong() {
         Session session = HibernateUtil.getFACTORY().openSession();
         Query query = session.createQuery("From Ban Where TRANGTHAI =: TRANGTHAI");// truy vấn trên entity(HQL)
@@ -46,10 +47,59 @@ public class BanRepository {
         List<Ban> list = query.getResultList();
         return list;
     }
-     public List<Ban> getBanAll() {
+
+    public List<Ban> getBanAll() {
         Session session = HibernateUtil.getFACTORY().openSession();
         Query query = session.createQuery("From Ban");// truy vấn trên entity(HQL)
         List<Ban> list = query.getResultList();
         return list;
+    }
+
+    public List<Ban> getAll() {
+        Session session = HibernateUtil.getFACTORY().openSession();
+        String fromTable = "FROM Ban"; // HQL
+        javax.persistence.Query query = session.createQuery(fromTable, Ban.class);
+        List<Ban> lists = query.getResultList();
+        return lists;
+    }
+
+    public Boolean add(Ban ban) {
+        Transaction transaction = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            session.save(ban);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    public Boolean update(Ban ban) {
+        Transaction transaction = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            session.update(ban);
+            transaction.commit();
+            getAll();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    public Boolean delete(Ban ban) {
+        Transaction transaction = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            session.delete(ban);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
     }
 }

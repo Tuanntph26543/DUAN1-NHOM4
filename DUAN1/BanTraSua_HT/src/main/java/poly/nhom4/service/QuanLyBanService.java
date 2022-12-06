@@ -11,9 +11,17 @@ import poly.nhom4.reponse.BanReponse;
  *
  * @author ACER
  */
-public interface BanService {
+public interface QuanLyBanService {
+
     List<BanReponse> getBanConTrong();
+
     List<BanReponse> getBanAll();
 
-     boolean updateBan(int maBan);
+    boolean updateBan(int maBan);
+
+    boolean add(BanReponse banReponse);
+
+    boolean update(BanReponse banReponse);
+
+    boolean delete(BanReponse banReponse);
 }

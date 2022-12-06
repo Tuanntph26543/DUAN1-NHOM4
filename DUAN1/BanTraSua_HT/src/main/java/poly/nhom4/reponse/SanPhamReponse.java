@@ -21,12 +21,21 @@ public class SanPhamReponse {
     private int trangThai;
 
     public SanPhamReponse(SanPham sanPham) {
-        this.maSp = sanPham.getMASP();
-        this.tenSp = sanPham.getTENSP();
-        this.donGia = sanPham.getGIABAN();
-        this.soTienKM = sanPham.getKHUYENMAI().getSOTIENKM();
-        this.anhSP = sanPham.getANHSP();
-        this.trangThai = sanPham.getTRANGTHAI();
+        if (sanPham.getKHUYENMAI() == null) {
+            this.maSp = sanPham.getMASP();
+            this.tenSp = sanPham.getTENSP();
+            this.donGia = sanPham.getGIABAN();
+            this.soTienKM = new BigDecimal(0);
+            this.anhSP = sanPham.getANHSP();
+            this.trangThai = sanPham.getTRANGTHAI();
+        } else {
+            this.maSp = sanPham.getMASP();
+            this.tenSp = sanPham.getTENSP();
+            this.donGia = sanPham.getGIABAN();
+            this.soTienKM = sanPham.getKHUYENMAI().getSOTIENKM();
+            this.anhSP = sanPham.getANHSP();
+            this.trangThai = sanPham.getTRANGTHAI();
+        }
     }
 
     public int getMaSp() {
