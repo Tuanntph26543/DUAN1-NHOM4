@@ -88,9 +88,9 @@ public class SanPhamReponse {
 
     public String layTrangThai(int trangThai1) {
         if (trangThai1 == 0) {
-            return "Dang Ban";
+            return "Đang Bán";
         } else {
-            return "Dang Ban";
+            return "Ngừng Bán";
         }
 
     }

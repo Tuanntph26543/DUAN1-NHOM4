@@ -28,7 +28,7 @@ import poly.nhom4.service.impl.UserTTServiceIplm;
  * @author ACER
  */
 public class NguyenLieuNCCView extends javax.swing.JFrame {
-
+    
     private DefaultTableModel defaultTableModel;
     private final QuanLyNguyenLieuService quanLyNguyenLieuService;
     private static final String P_SDT = "^([0-9\\.]{10})$";
@@ -51,7 +51,7 @@ public class NguyenLieuNCCView extends javax.swing.JFrame {
         loadData2();
         dongHo();
     }
-
+    
     public void dongHo() {
         new Thread() {
             public void run() {
@@ -78,7 +78,7 @@ public class NguyenLieuNCCView extends javax.swing.JFrame {
             }
         }.start();
     }
-
+    
     public void loadData() {
         defaultTableModel = (DefaultTableModel) tbNguyenLieu.getModel();
         defaultTableModel.setRowCount(0);
@@ -89,7 +89,7 @@ public class NguyenLieuNCCView extends javax.swing.JFrame {
             });
         }
     }
-
+    
     public void loadData2() {
         defaultTableModel = (DefaultTableModel) tbNCC.getModel();
         defaultTableModel.setRowCount(0);
@@ -722,7 +722,7 @@ public class NguyenLieuNCCView extends javax.swing.JFrame {
             quanLyNguyenLieuService.update(nguyenLieuReponse);
             JOptionPane.showMessageDialog(this, "Update thành công");
             loadData();
-
+            
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
@@ -800,7 +800,7 @@ public class NguyenLieuNCCView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn data");
         } else {
             int choice = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa không", "Delete", 0);
-
+            
             if (choice == JOptionPane.YES_OPTION) {
                 NhaCungCapReponse nhaCungCapReponse = quanLyNCCService.getAllNCC().get(row);
                 quanLyNCCService.delete(nhaCungCapReponse);
@@ -844,7 +844,7 @@ public class NguyenLieuNCCView extends javax.swing.JFrame {
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         // TODO add your handling code here:
         Integer int1 = Integer.valueOf(lblMaNVLay.getText());
-
+        
         KhuyenMaiView bh = new KhuyenMaiView(int1);
         bh.show();
         this.dispose();
@@ -853,16 +853,16 @@ public class NguyenLieuNCCView extends javax.swing.JFrame {
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         // TODO add your handling code here:
         Integer int1 = Integer.valueOf(lblMaNVLay.getText());
-
         ThongKeView bh = new ThongKeView(int1);
         bh.show();
+        bh.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
         // TODO add your handling code here:
         Integer int1 = Integer.valueOf(lblMaNVLay.getText());
-
+        
         NguyenLieuNCCView bh = new NguyenLieuNCCView(int1);
         bh.show();
         this.dispose();

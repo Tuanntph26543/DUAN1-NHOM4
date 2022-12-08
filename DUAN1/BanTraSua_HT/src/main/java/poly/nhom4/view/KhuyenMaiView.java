@@ -732,6 +732,11 @@ public void dongHo() {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\ACER\\Desktop\\bts2\\src\\main\\java\\com\\raven\\icon\\7.png")); // NOI18N
         jLabel8.setText("Nhân Viên");
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -944,6 +949,16 @@ public void dongHo() {
         bh.show();
         this.dispose();
     }//GEN-LAST:event_jLabel20MouseClicked
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        // TODO add your handling code here:
+         Integer int1 = Integer.valueOf(lblMaNVLay.getText());
+
+        NhanVienView1 bh = new NhanVienView1(int1);
+        bh.show();
+        bh.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jLabel8MouseClicked
 
     /**
      * @param args the command line arguments

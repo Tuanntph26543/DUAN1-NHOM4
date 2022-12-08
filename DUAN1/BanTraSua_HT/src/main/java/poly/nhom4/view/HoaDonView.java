@@ -827,9 +827,9 @@ public class HoaDonView extends javax.swing.JFrame {
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         // TODO add your handling code here:
         Integer int1 = Integer.valueOf(lblMaNVLay.getText());
-
         KhuyenMaiView bh = new KhuyenMaiView(int1);
         bh.show();
+        bh.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jLabel6MouseClicked
 

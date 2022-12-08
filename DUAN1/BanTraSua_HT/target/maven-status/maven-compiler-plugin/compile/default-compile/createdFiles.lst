@@ -7,6 +7,7 @@ poly\nhom4\view\BanHang$10.class
 poly\nhom4\view\BanView$4.class
 poly\nhom4\view\BanHang$6.class
 poly\nhom4\domainmodel\SanPham.class
+poly\nhom4\view\NhanVienView$7.class
 poly\nhom4\view\ThongKeView$5.class
 poly\nhom4\view\XacNhanCa$1.class
 poly\nhom4\view\HoaDonView$1.class
@@ -65,6 +66,7 @@ poly\nhom4\view\BanHang$24.class
 poly\nhom4\service\QuanLyBanService.class
 poly\nhom4\service\QuanLyNCCService.class
 poly\nhom4\view\SanPhamView$14.class
+poly\nhom4\view\NhanVienView$6.class
 poly\nhom4\view\BanHang$5.class
 poly\nhom4\view\HoaDonView.class
 poly\nhom4\repository\USERTTRepository.class
@@ -120,6 +122,7 @@ poly\nhom4\view\BanView$2.class
 poly\nhom4\view\BanHang$19.class
 poly\nhom4\view\KhuyenMaiView$5.class
 poly\nhom4\view\BanHang$8.class
+poly\nhom4\view\NhanVienView$5.class
 poly\nhom4\view\DangKiKhachHang$2.class
 poly\nhom4\view\HoaDonView$11.class
 poly\nhom4\view\BanHang$12.class
@@ -135,6 +138,7 @@ poly\nhom4\view\BanHang$18.class
 poly\nhom4\service\TKDTService.class
 poly\nhom4\view\NewJFrame1$1.class
 poly\nhom4\reponse\BanReponse.class
+poly\nhom4\view\NhanVienView$4.class
 poly\nhom4\hibernateconfig\HibernateUtil.class
 poly\nhom4\service\impl\LoaiSPServiceIplm.class
 poly\nhom4\view\KhuyenMaiView$15.class
@@ -166,6 +170,7 @@ poly\nhom4\view\HoaDonView$8.class
 poly\nhom4\view\NewMain.class
 poly\nhom4\view\HoaDonView$13.class
 poly\nhom4\view\DangKiKhachHang$4.class
+poly\nhom4\view\NhanVienView$3.class
 poly\nhom4\repository\HDCTRepository.class
 poly\nhom4\view\DangNhapForm.class
 poly\nhom4\view\KhuyenMaiView$14.class
@@ -184,8 +189,10 @@ poly\nhom4\view\ThongKeView$9.class
 poly\nhom4\domainmodel\Ban.class
 poly\nhom4\domainmodel\LoaiSP.class
 poly\nhom4\service\impl\QLHDServiceIplm.class
+poly\nhom4\view\NhanVienView$2.class
 poly\nhom4\repository\KhachHangRepository.class
 poly\nhom4\view\KhuyenMaiView$2.class
+poly\nhom4\view\NhanVienView.class
 poly\nhom4\repository\NguyenLieuRepository.class
 poly\nhom4\view\HoaDonView$14.class
 poly\nhom4\view\SanPhamView$6.class
@@ -201,6 +208,7 @@ poly\nhom4\view\KhuyenMaiView$1.class
 poly\nhom4\repository\ChucVuRepository.class
 poly\nhom4\service\impl\HDCTIplm.class
 poly\nhom4\view\KhuyenMaiView$12.class
+poly\nhom4\view\NhanVienView$1.class
 poly\nhom4\view\HoaDonView$6.class
 poly\nhom4\reponse\HoaDonReponse.class
 poly\nhom4\view\SanPhamView$5.class

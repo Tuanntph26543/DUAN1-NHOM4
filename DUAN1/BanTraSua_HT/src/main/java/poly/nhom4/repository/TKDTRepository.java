@@ -22,7 +22,7 @@ public class TKDTRepository {
 
     public List<Object[]> getAllDT() {
         session = HibernateUtil.getFACTORY().openSession();
-        String sql = "select p.hoaDon.ngayTao, sum(p.DONGIA-p.sanPham.KHUYENMAI.SOTIENKM*p.SOLUONG) as DOANHTHU\n"
+        String sql = "select p.hoaDon.ngayTao, sum((p.DONGIA-p.sanPham.KHUYENMAI.SOTIENKM)*p.SOLUONG) as DOANHTHU\n"
                 + "from HoaDonChiTiet p where p.hoaDon.tinhTrang != 1 and p.hoaDon.tinhTrang != 0 group by p.hoaDon.ngayTao Order by p.hoaDon.ngayTao desc";
         Query query = session.createQuery(sql);
         List<Object[]> list1 = query.list();
