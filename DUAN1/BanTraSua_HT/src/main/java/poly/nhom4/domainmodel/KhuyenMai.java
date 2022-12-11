@@ -6,12 +6,16 @@ package poly.nhom4.domainmodel;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  *
@@ -36,7 +40,7 @@ public class KhuyenMai {
     private Date NGAYBD;
 
     @Column(name = "NGAYKT")
-    private Date NGAYKT;
+    private Timestamp NGAYKT;
 
     @Column(name = "TRANGTHAI")
     private int TRANGTHAI;
@@ -44,7 +48,7 @@ public class KhuyenMai {
     public KhuyenMai() {
     }
 
-    public KhuyenMai(int MAKM, String TENKM, BigDecimal SOTIENKM, Date NGAYBD, Date NGAYKT, int TRANGTHAI) {
+    public KhuyenMai(int MAKM, String TENKM, BigDecimal SOTIENKM, Date NGAYBD, Timestamp NGAYKT, int TRANGTHAI) {
         this.MAKM = MAKM;
         this.TENKM = TENKM;
         this.SOTIENKM = SOTIENKM;
@@ -53,7 +57,7 @@ public class KhuyenMai {
         this.TRANGTHAI = TRANGTHAI;
     }
 
-    public KhuyenMai(String TENKM, BigDecimal SOTIENKM, Date NGAYBD, Date NGAYKT, int TRANGTHAI) {
+    public KhuyenMai(String TENKM, BigDecimal SOTIENKM, Date NGAYBD, Timestamp NGAYKT, int TRANGTHAI) {
         this.TENKM = TENKM;
         this.SOTIENKM = SOTIENKM;
         this.NGAYBD = NGAYBD;
@@ -93,11 +97,11 @@ public class KhuyenMai {
         this.NGAYBD = NGAYBD;
     }
 
-    public Date getNGAYKT() {
+    public Timestamp getNGAYKT() {
         return NGAYKT;
     }
 
-    public void setNGAYKT(Date NGAYKT) {
+    public void setNGAYKT(Timestamp NGAYKT) {
         this.NGAYKT = NGAYKT;
     }
 
@@ -108,5 +112,7 @@ public class KhuyenMai {
     public void setTRANGTHAI(int TRANGTHAI) {
         this.TRANGTHAI = TRANGTHAI;
     }
+
+   
 
 }

@@ -6,8 +6,13 @@ package poly.nhom4.service.impl;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import poly.nhom4.domainmodel.KhuyenMai;
 import poly.nhom4.reponse.KhuyenMaiReponse;
 import poly.nhom4.repository.KhuyenMaiRepository;
@@ -43,27 +48,38 @@ public class KhuyenMaiServiceImpl implements KhuyenMaiService {
 
     @Override
     public String add(KhuyenMaiReponse km) {
-        Date ngayBD = Date.valueOf(km.getNgayBD());
-        Date ngayKT = Date.valueOf(km.getNgayKT());
-        repo.add(new KhuyenMai(km.getTenKM(), km.getSoTienKM(), ngayBD, ngayKT, km.getTrangThai()));
+        try {
+            Date ngayBD = Date.valueOf(km.getNgayBD());
+//        Date ngayKT = Date.valueOf(km.getNgayKT());
+            SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            repo.add(new KhuyenMai(km.getTenKM(), km.getSoTienKM(), ngayBD, new Timestamp(sdf2.parse(km.getNgayKT()).getTime()), km.getTrangThai()));
 
-        if (km != null) {
-            return "Thành công";
-        } else {
-            return "Thất bại";
+            if (km != null) {
+                return "Thành công";
+            } else {
+                return "Thất bại";
+            }
+        } catch (ParseException ex) {
+            Logger.getLogger(KhuyenMaiServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
     }
 
     @Override
     public String update(KhuyenMaiReponse km) {
-        Date ngayBD = Date.valueOf(km.getNgayBD());
-        Date ngayKT = Date.valueOf(km.getNgayKT());
-        repo.update(new KhuyenMai(km.getMaKM(), km.getTenKM(), km.getSoTienKM(), ngayBD, ngayKT, km.getTrangThai()));
-        if (km != null) {
-            return "Thành công";
-        } else {
-            return "Thất bại";
+        try {
+            Date ngayBD = Date.valueOf(km.getNgayBD());
+            SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            repo.update(new KhuyenMai(km.getMaKM(), km.getTenKM(), km.getSoTienKM(), ngayBD, new Timestamp(sdf2.parse(km.getNgayKT()).getTime()), km.getTrangThai()));
+            if (km != null) {
+                return "Thành công";
+            } else {
+                return "Thất bại";
+            }
+        } catch (ParseException ex) {
+            Logger.getLogger(KhuyenMaiServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
     }
 
     @Override
@@ -101,15 +117,14 @@ public class KhuyenMaiServiceImpl implements KhuyenMaiService {
 
     @Override
     public boolean NgungAll(int maKM, int trangThai) {
-        return repo.updateKM(maKM, trangThai);      
+        return repo.updateKM(maKM, trangThai);
     }
 
     @Override
     public List<Integer> getMaAll() {
-        return repo.getMaAll();  
+        return repo.getMaAll();
     }
 
-    
     @Override
     public BigDecimal getsoTienKM(int maKM) {
         return repo.getsoTienKM(maKM);
@@ -117,13 +132,12 @@ public class KhuyenMaiServiceImpl implements KhuyenMaiService {
 
     @Override
     public KhuyenMai getKMByMa(Integer maKM) {
-       return repo.getKMByMa(maKM);
+        return repo.getKMByMa(maKM);
     }
 
     @Override
     public int getMa(BigDecimal soTienKM) {
-       return repo.getMa(soTienKM);
+        return repo.getMa(soTienKM);
     }
-    
-    
+
 }

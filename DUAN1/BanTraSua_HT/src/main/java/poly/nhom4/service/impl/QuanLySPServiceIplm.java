@@ -17,7 +17,7 @@ import poly.nhom4.service.QuanLySPService;
  */
 public class QuanLySPServiceIplm implements QuanLySPService {
 
-    private final SanPhamRepository sanPhamRepository ;
+    private final SanPhamRepository sanPhamRepository;
 
     public QuanLySPServiceIplm() {
         sanPhamRepository = new SanPhamRepository();
@@ -91,13 +91,18 @@ public class QuanLySPServiceIplm implements QuanLySPService {
 
     @Override
     public List<SanPhamReponse> getAllByTT2() {
-       List<SanPham> lists = sanPhamRepository.getAllByTT2();
+        List<SanPham> lists = sanPhamRepository.getAllByTT2();
         List<SanPhamReponse> reponses = new ArrayList<>();
         for (SanPham sp : lists) {
             SanPhamReponse reponse = new SanPhamReponse(sp);
             reponses.add(reponse);
         }
         return reponses;
+    }
+
+    @Override
+    public boolean updateSPKM(int maKM, int maSP) {
+        return sanPhamRepository.updateSPKM(maKM, maSP);
     }
 
 }

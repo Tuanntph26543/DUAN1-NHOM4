@@ -17,7 +17,7 @@ public interface QuanLySPService {
     List<SanPhamReponse> getAllSanPham();
 
     List<SanPhamReponse> getAllByTT();
-    
+
     List<SanPhamReponse> getAllByTT2();
 
     SanPham getSPByMa(int ma);
@@ -29,4 +29,6 @@ public interface QuanLySPService {
     String delete(SanPham sp);
 
     List<SanPhamReponse> getSPByTen(String tenSP);
+
+    boolean updateSPKM(int maKM, int maSP);
 }

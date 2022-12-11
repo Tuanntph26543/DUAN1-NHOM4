@@ -5,6 +5,7 @@
 package poly.nhom4.reponse;
 
 import java.math.BigDecimal;
+import poly.nhom4.domainmodel.KhuyenMai;
 import poly.nhom4.domainmodel.SanPham;
 
 /**
@@ -19,23 +20,27 @@ public class SanPhamReponse {
     private BigDecimal soTienKM;
     private String anhSP;
     private int trangThai;
+    private Integer maKM;
+
+    public SanPhamReponse() {
+    }
 
     public SanPhamReponse(SanPham sanPham) {
-        if (sanPham.getKHUYENMAI() == null) {
-            this.maSp = sanPham.getMASP();
-            this.tenSp = sanPham.getTENSP();
-            this.donGia = sanPham.getGIABAN();
-            this.soTienKM = new BigDecimal(0);
-            this.anhSP = sanPham.getANHSP();
-            this.trangThai = sanPham.getTRANGTHAI();
-        } else {
-            this.maSp = sanPham.getMASP();
-            this.tenSp = sanPham.getTENSP();
-            this.donGia = sanPham.getGIABAN();
-            this.soTienKM = sanPham.getKHUYENMAI().getSOTIENKM();
-            this.anhSP = sanPham.getANHSP();
-            this.trangThai = sanPham.getTRANGTHAI();
-        }
+        this.maSp = sanPham.getMASP();
+        this.tenSp = sanPham.getTENSP();
+        this.donGia = sanPham.getGIABAN();
+        this.soTienKM = sanPham.getKHUYENMAI().getSOTIENKM();
+        this.anhSP = sanPham.getANHSP();
+        this.trangThai = sanPham.getTRANGTHAI();
+        this.maKM = sanPham.getKHUYENMAI().getMAKM();
+    }
+
+    public Integer getMaKM() {
+        return maKM;
+    }
+
+    public void setMaKM(Integer maKM) {
+        this.maKM = maKM;
     }
 
     public int getMaSp() {

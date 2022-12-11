@@ -132,4 +132,19 @@ public class SanPhamRepository {
         return list;
     }
 
+     public  boolean updateSPKM(int maKM, int maSP){
+        Transaction transaction = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            org.hibernate.query.Query query = session.createQuery("update SanPham set KHUYENMAI.MAKM = :MAKM Where MASP = :MASP and TRANGTHAI=0");
+            query.setParameter("MAKM", maKM);
+            query.setParameter("MASP", maSP);
+            query.executeUpdate();
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+
+        }
+        return false;
+    }
 }
