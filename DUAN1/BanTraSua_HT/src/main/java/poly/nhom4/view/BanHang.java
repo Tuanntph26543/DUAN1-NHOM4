@@ -99,15 +99,18 @@ public class BanHang extends javax.swing.JFrame {
         defaultTableModel = (DefaultTableModel) tbSanPham.getModel();
         defaultTableModel.setRowCount(0);
         for (SanPhamReponse x : list) {
-            double gia = x.getDonGia().doubleValue();
-            double giamGia = x.getSoTienKM().doubleValue();
-            double gia2 = Math.round(gia * 1000) / 1000;
-            BigDecimal b = new BigDecimal(gia2);
-            BigDecimal c = new BigDecimal(giamGia);
-            ImageIcon icon = new ImageIcon(x.getAnhSP());
-            defaultTableModel.addRow(new Object[]{
-                x.getMaSp(), x.getTenSp(), b, c, icon, x.layTrangThai(x.getTrangThai())
-            });
+            if (x.getTrangThai() == 0) {
+                double gia = x.getDonGia().doubleValue();
+                double giamGia = x.getSoTienKM().doubleValue();
+                double gia2 = Math.round(gia * 1000) / 1000;
+                BigDecimal b = new BigDecimal(gia2);
+                BigDecimal c = new BigDecimal(giamGia);
+                ImageIcon icon = new ImageIcon(x.getAnhSP());
+                defaultTableModel.addRow(new Object[]{
+                    x.getMaSp(), x.getTenSp(), b, c, icon, x.layTrangThai(x.getTrangThai())
+                });
+            }
+
         }
     }
 
@@ -1097,6 +1100,7 @@ public class BanHang extends javax.swing.JFrame {
         GiaoCaView g = new GiaoCaView(tongTien2, tGBD);
         g.setVisible(true);
         g.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -1176,6 +1180,7 @@ public class BanHang extends javax.swing.JFrame {
         int row = tbHoaDon1.getSelectedRow();
         Integer maHD = (Integer) tbHoaDon1.getValueAt(row, 0);
         hDCTService.deleteAll(maHD);
+        addrowHDCT();
     }//GEN-LAST:event_btnClearSPActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

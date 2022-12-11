@@ -67,7 +67,7 @@ public class HoaDonRepository {
     }
 
     public boolean createHD(HoaDon hoaDon) {
-
+ 
         Transaction transaction = null;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();

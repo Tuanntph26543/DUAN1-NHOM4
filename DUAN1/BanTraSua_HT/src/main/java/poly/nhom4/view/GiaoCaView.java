@@ -205,11 +205,12 @@ public class GiaoCaView extends javax.swing.JFrame {
         gc.setMACA(maCa);
         gc.setTONGTIENTRONGCA(bd);
         gc.setTRANGTHAI(0);
-        giaoCaService.updateGC(gc);
+        giaoCaService.updateGC(gc);    
         DangNhapForm bh = new DangNhapForm();
-        bh.show();
+        bh.show(true);
         bh.setLocationRelativeTo(null);
         this.dispose();
+  
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

@@ -73,7 +73,7 @@ public class NhanVienView1 extends javax.swing.JFrame {
         for (UserTTReponse x : lst) {
             defaultTableModel.addRow(new Object[]{
                 x.getTaiKhoan(), x.getMatKhau(), x.getHoTen(), x.getGioiTinh(),
-                x.getNamSinh(), x.getDiaChi(), x.getCccd(), x.getSdt(), x.getChucVu().getTENCV()
+                x.getNamSinh(), x.getDiaChi(), x.getSdt(), x.getCccd(), x.getChucVu().getTENCV()
             });
         }
     }

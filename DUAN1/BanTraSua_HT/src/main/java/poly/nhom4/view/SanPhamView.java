@@ -101,7 +101,7 @@ public class SanPhamView extends javax.swing.JFrame {
         for (SanPhamReponse sp : list) {
             model.addRow(new Object[]{
                 sp.getMaSp(), sp.getTenSp(), sp.getDonGia(), sp.getSoTienKM(),
-                sp.getTrangThai() == 0 ? "Đang Bán" : "Ngừng Bán", sp.getAnhSP()
+                sp.getTrangThai() == 0 ? "Đang Bán" : "Ngừng Bán"
             });
         }
     }
@@ -269,13 +269,13 @@ public class SanPhamView extends javax.swing.JFrame {
 
         tblSp3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Mã sản phẩm", "Tên sản phẩm", "GIá bán", "Số tiền KM", "Trạng thái", "Hình ảnh"
+                "Mã sản phẩm", "Tên sản phẩm", "GIá bán", "Số tiền KM", "Trạng thái"
             }
         ));
         tblSp3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -796,6 +796,7 @@ public class SanPhamView extends javax.swing.JFrame {
 
     private void tblSp3tblSpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSp3tblSpMouseClicked
         // TODO add your handling code here:
+         List<SanPhamReponse> lista=reponses;
         int row = tblSp3.getSelectedRow();
 
         Integer maSP = (Integer) tblSp3.getValueAt(row, 0);
@@ -823,7 +824,7 @@ public class SanPhamView extends javax.swing.JFrame {
             rdNgungBan3.setSelected(true);
         }
 
-        String anh = (String) tblSp3.getValueAt(row, 5);
+        String anh = lista.get(row).getAnhSP();
         ImageIcon img = new ImageIcon(anh);
         lblImg.setIcon(img);
     }//GEN-LAST:event_tblSp3tblSpMouseClicked

@@ -53,7 +53,8 @@ public class KhuyenMaiView extends javax.swing.JFrame {
         ComBoBox();
         dongHo();
     }
-public void dongHo() {
+
+    public void dongHo() {
         new Thread() {
             public void run() {
                 while (true) {
@@ -79,6 +80,7 @@ public void dongHo() {
             }
         }.start();
     }
+
     private void showData(List<KhuyenMaiReponse> list) {
         model = (DefaultTableModel) tbKM.getModel();
         model.setRowCount(0);
@@ -828,9 +830,10 @@ public void dongHo() {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
+        List<KhuyenMaiReponse> reponses1 = khuyenMaiService.getAll();
         row = tbKM.getSelectedRow();
         if (cb_XoaAll.isSelected()) {
-            for (KhuyenMaiReponse reponse : reponses) {
+            for (KhuyenMaiReponse reponse : reponses1) {
                 khuyenMaiService.NgungAll(reponse.getMaKM(), reponse.getTrangThai());
                 showData(new KhuyenMaiServiceImpl().getAll());
                 cb_XoaAll.setSelected(false);
@@ -952,7 +955,7 @@ public void dongHo() {
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         // TODO add your handling code here:
-         Integer int1 = Integer.valueOf(lblMaNVLay.getText());
+        Integer int1 = Integer.valueOf(lblMaNVLay.getText());
 
         NhanVienView1 bh = new NhanVienView1(int1);
         bh.show();
@@ -961,8 +964,8 @@ public void dongHo() {
     }//GEN-LAST:event_jLabel8MouseClicked
 
     /**
-     * @param args the command line arguments
-//     */
+     * @param args the command line arguments //
+     */
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

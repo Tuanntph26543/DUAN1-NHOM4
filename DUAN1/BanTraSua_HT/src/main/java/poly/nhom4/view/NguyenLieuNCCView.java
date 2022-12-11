@@ -768,7 +768,7 @@ public class NguyenLieuNCCView extends javax.swing.JFrame {
             ncc.setSdt(sdt);
             quanLyNCCService.add(ncc);
             JOptionPane.showMessageDialog(this, "Thêm thành công");
-            loadData();
+            loadData2();
         }
     }//GEN-LAST:event_btnCreate1ActionPerformed
 

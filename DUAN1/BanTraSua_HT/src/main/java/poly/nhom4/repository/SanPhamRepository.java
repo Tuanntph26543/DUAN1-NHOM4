@@ -42,7 +42,7 @@ public class SanPhamRepository {
     }
 
     public List<SanPham> getAllByTT() {
-        String sql = "from SANPHAM WHERE TRANGTHAI=1";
+        String sql = "from SanPham WHERE TRANGTHAI=0";
         Session session = HibernateUtil.getFACTORY().openSession();
         Query query = session.createQuery(sql, SanPham.class);
         List<SanPham> lists = query.getResultList();
@@ -50,7 +50,7 @@ public class SanPhamRepository {
     }
 
     public List<SanPham> getAllByTT2() {
-        String sql = "from SANPHAM WHERE TRANGTHAI=0";
+        String sql = "from SanPham WHERE TRANGTHAI=1";
         Session session = HibernateUtil.getFACTORY().openSession();
         Query query = session.createQuery(sql, SanPham.class);
         List<SanPham> lists = query.getResultList();
