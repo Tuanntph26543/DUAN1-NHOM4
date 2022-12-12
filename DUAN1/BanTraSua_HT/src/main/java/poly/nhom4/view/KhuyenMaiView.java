@@ -1163,9 +1163,9 @@ public class KhuyenMaiView extends javax.swing.JFrame {
         row = tbKM.getSelectedRow();
         String tt = (String) tbKM.getValueAt(row, 5);
         List<KhuyenMaiReponse> list1 = khuyenMaiService.getAll();
-        List<SanPhamReponse> list2 = spser.getAllByTT();
+        List<SanPhamReponse> list2 = spser.getAll2();
         if (row == -1 || tt.equals("Ngừng áp dụng")) {
-            JOptionPane.showMessageDialog(this, "Chọn Khuyến mại");
+            JOptionPane.showMessageDialog(this, "Chọn Khuyến mại có hiệu lực");
         } else {
             for (int i = 0; i < list2.size(); i++) {
                 if (listCbx.get(i).isSelected()) {

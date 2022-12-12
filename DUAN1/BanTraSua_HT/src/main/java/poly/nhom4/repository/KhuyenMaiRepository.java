@@ -57,7 +57,7 @@ public class KhuyenMaiRepository {
     }
 
     public List<KhuyenMai> getAllByTT() {
-        String sql = "from KhuyenMai WHERE TRANGTHAI=1";
+        String sql = "from KhuyenMai WHERE TRANGTHAI=1 and MAKM !=10";
         Session session = HibernateUtil.getFACTORY().openSession();
         Query query = session.createQuery(sql, KhuyenMai.class);
         List<KhuyenMai> lists = query.getResultList();
