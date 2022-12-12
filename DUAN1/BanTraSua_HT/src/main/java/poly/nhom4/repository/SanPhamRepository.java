@@ -147,4 +147,49 @@ public class SanPhamRepository {
         }
         return false;
     }
+     
+     public List<SanPham> getAll2() {
+        String fromTable = "FROM SanPham where TRANGTHAI=0 and MAKM =10";
+        Session session = HibernateUtil.getFACTORY().openSession();
+        Query query = session.createQuery(fromTable, SanPham.class);
+        List<SanPham> lists = query.getResultList();
+        return lists;
+    }
+    
+    public List<SanPham> getAll3() {
+        String fromTable = "FROM SanPham where TRANGTHAI=0 and MAKM !=10";
+        Session session = HibernateUtil.getFACTORY().openSession();
+        Query query = session.createQuery(fromTable, SanPham.class);
+        List<SanPham> lists = query.getResultList();
+        return lists;
+    }
+ 
+    public  boolean soOut(int maSP){
+        Transaction transaction = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            org.hibernate.query.Query query = session.createQuery("update SanPham set KHUYENMAI.MAKM = 10 Where MASP = :MASP");
+            query.setParameter("MASP", maSP);
+            query.executeUpdate();
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+
+        }
+        return false;
+    }
+    
+     public  boolean soOut2(){
+        Transaction transaction = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            org.hibernate.query.Query query = session.createQuery("update SanPham set KHUYENMAI.MAKM = 10");
+            query.executeUpdate();
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+
+        }
+        return false;
+    }
 }

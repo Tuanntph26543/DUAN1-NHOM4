@@ -31,4 +31,12 @@ public interface QuanLySPService {
     List<SanPhamReponse> getSPByTen(String tenSP);
 
     boolean updateSPKM(int maKM, int maSP);
+
+    List<SanPhamReponse> getAll2();
+
+    List<SanPhamReponse> getAll3();
+
+    boolean soOut(int maSP);
+
+    boolean soOut2();
 }

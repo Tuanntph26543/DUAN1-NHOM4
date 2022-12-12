@@ -23,17 +23,13 @@ public class KhuyenMaiRepository {
     private String fromTable = "from KhuyenMai";
 
     public List<KhuyenMai> getAll() {
-        try {
-            session = HibernateUtil.getFACTORY().openSession();
-            Query query = session.createQuery(fromTable, KhuyenMai.class);
-            List<KhuyenMai> list = query.getResultList();
-            return list;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+       String sql = "from KhuyenMai WHERE MAKM !=10";
+        session = HibernateUtil.getFACTORY().openSession();
+        Query query = session.createQuery(sql, KhuyenMai.class);
+        List<KhuyenMai> list = query.getResultList();
+        return list;
     }
-
+    
     public KhuyenMai getOne(String tenKM) {
         String sql = fromTable + "WHERE TENKM = :TENKM";
         Query query = session.createQuery(sql, KhuyenMai.class);

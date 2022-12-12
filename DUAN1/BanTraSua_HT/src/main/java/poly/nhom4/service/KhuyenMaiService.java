@@ -30,10 +30,12 @@ public interface KhuyenMaiService {
     String update(KhuyenMaiReponse km);
 
     String delete(KhuyenMaiReponse km);
-    
-     List<Integer> getMaAll();
-    
-     BigDecimal getsoTienKM(int maKM);
-     KhuyenMai getKMByMa(Integer maKM);
-     int getMa(BigDecimal soTienKM);
+
+    List<Integer> getMaAll();
+
+    BigDecimal getsoTienKM(int maKM);
+
+    KhuyenMai getKMByMa(Integer maKM);
+
+    int getMa(BigDecimal soTienKM);
 }

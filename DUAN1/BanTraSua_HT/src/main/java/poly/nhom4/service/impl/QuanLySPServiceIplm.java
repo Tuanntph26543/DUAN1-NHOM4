@@ -105,4 +105,34 @@ public class QuanLySPServiceIplm implements QuanLySPService {
         return sanPhamRepository.updateSPKM(maKM, maSP);
     }
 
+    @Override
+    public List<SanPhamReponse> getAll2() {
+        List<SanPham> list = sanPhamRepository.getAll2();
+        List<SanPhamReponse> list1 = new ArrayList<>();
+        for (SanPham sanPham : list) {
+            list1.add(new SanPhamReponse(sanPham));
+        }
+        return list1;
+    }
+
+    @Override
+    public List<SanPhamReponse> getAll3() {
+        List<SanPham> list = sanPhamRepository.getAll3();
+        List<SanPhamReponse> list1 = new ArrayList<>();
+        for (SanPham sanPham : list) {
+            list1.add(new SanPhamReponse(sanPham));
+        }
+        return list1;
+    }
+
+    @Override
+    public boolean soOut(int maSP) {
+         return sanPhamRepository.soOut(maSP);
+    }
+
+    @Override
+    public boolean soOut2() {
+       return sanPhamRepository.soOut2();
+    }
+
 }
