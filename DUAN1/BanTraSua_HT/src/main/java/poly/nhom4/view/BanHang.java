@@ -28,6 +28,7 @@ import javax.swing.table.DefaultTableModel;
 import poly.nhom4.domainmodel.Ban;
 import poly.nhom4.domainmodel.HoaDon;
 import poly.nhom4.domainmodel.HoaDonChiTiet;
+import poly.nhom4.domainmodel.KhachHang;
 import poly.nhom4.reponse.BanReponse;
 import poly.nhom4.reponse.HDCTReponse;
 import poly.nhom4.reponse.HoaDonReponse;
@@ -90,7 +91,7 @@ public class BanHang extends javax.swing.JFrame {
         addrowHD();
         addrowHDCT();
         addBan();
-
+        clearHD();
     }
     double tongTienBanDuoc = 0;
 
@@ -257,7 +258,6 @@ public class BanHang extends javax.swing.JFrame {
         txtTienThua = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
-        jButton9 = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
         lblThongTinDn = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
@@ -568,11 +568,19 @@ public class BanHang extends javax.swing.JFrame {
 
         jLabel9.setText("MA HD");
 
-        jLabel10.setText("Ngày Tạp :");
+        txtMaHD.setEnabled(false);
+
+        jLabel10.setText("Ngày Tạo :");
+
+        txtNgayTao.setEnabled(false);
 
         jLabel11.setText("Tên NV :");
 
+        txtTenNV.setEnabled(false);
+
         jLabel16.setText("Tổng Tiền :");
+
+        txtTongTien.setEnabled(false);
 
         jLabel17.setText("Tiền Khách Đưa :");
 
@@ -583,6 +591,8 @@ public class BanHang extends javax.swing.JFrame {
         });
 
         jLabel18.setText("Tiền Thừa :");
+
+        txtTienThua.setEnabled(false);
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setText("THANH TOÁN");
@@ -595,14 +605,6 @@ public class BanHang extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel19.setText("Hóa Đơn :");
 
-        jButton9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton9.setText("In Hóa Đơn");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
@@ -611,13 +613,7 @@ public class BanHang extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(jButton2)
-                                .addGap(49, 49, 49)
-                                .addComponent(jButton9)))
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -632,15 +628,21 @@ public class BanHang extends javax.swing.JFrame {
                                 .addGap(18, 18, 18))
                             .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 12, Short.MAX_VALUE)))
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMaHD)
-                            .addComponent(txtNgayTao)
-                            .addComponent(txtTenNV)
-                            .addComponent(txtTienThua, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTienKhachDua)
-                            .addComponent(txtTongTien))
-                        .addGap(318, 318, 318))))
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jButton2))
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtTenNV, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                                    .addComponent(txtNgayTao, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtMaHD)
+                                    .addComponent(txtTongTien)
+                                    .addComponent(txtTienKhachDua)
+                                    .addComponent(txtTienThua))))
+                        .addContainerGap(105, Short.MAX_VALUE))))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -672,9 +674,7 @@ public class BanHang extends javax.swing.JFrame {
                     .addComponent(jLabel18)
                     .addComponent(txtTienThua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
@@ -724,11 +724,11 @@ public class BanHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButton6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblMaNVLay, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(lblMaNVLay, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblThongTinDn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -781,7 +781,7 @@ public class BanHang extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "MASP", "TENSP", "DONGIA", "GIAMGIA", "HINHANH", "TRANGTHAI"
+                "Mã SP", "Tên SP", "Đơn Giá", "Giảm Giá", "Hình Ảnh", "Trạng Thái"
             }
         ) {
             Class[] types = new Class [] {
@@ -799,9 +799,6 @@ public class BanHang extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tbSanPham);
-        if (tbSanPham.getColumnModel().getColumnCount() > 0) {
-            tbSanPham.getColumnModel().getColumn(5).setResizable(false);
-        }
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -1028,31 +1025,39 @@ public class BanHang extends javax.swing.JFrame {
         // TODO add your handling code here:
         int row = tbHoaDon1.getSelectedRow();
         Integer maHD = (Integer) tbHoaDon1.getValueAt(row, 0);
-        String hoTen = khachHangService.getTenKhBySdt(txtSDT.getText());
-        txtHoTen.setText(hoTen);
-        if (hoTen != null) {
+        KhachHang kh = khachHangService.getKhBySdt(txtSDT.getText());
+
+        if (kh != null) {
             qLHDService.updateHDBySdt(maHD, txtSDT.getText());
+            txtHoTen.setText(kh.getTENKH());
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Lỗi");
+            JOptionPane.showMessageDialog(rootPane, "SDT không tồn tại");
         }
         addrowHD();
     }//GEN-LAST:event_txtSDTActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        long millis = System.currentTimeMillis();
-        java.sql.Date date = new java.sql.Date(millis);
-        HoaDon hd = new HoaDon();
-        hd.setKhachHang(null);
-        hd.setNgayTao(date);
-        Integer int1 = Integer.valueOf(lblMaNVLay.getText());
-        hd.setUsertt(userTTService.getUSerByMaNV(int1));
-        hd.setTinhTrang(0);
-        qLHDService.createHD(hd);
-        addrowHD();
-        addrowHDCT();
-        addrowHDCT1();
-        addrowHD();
+        try {
+            long millis = System.currentTimeMillis();
+            java.sql.Date date = new java.sql.Date(millis);
+            HoaDon hd = new HoaDon();
+            hd.setKhachHang(null);
+            hd.setNgayTao(date);
+            Integer int1 = Integer.valueOf(lblMaNVLay.getText());
+            hd.setUsertt(userTTService.getUSerByMaNV(int1));
+            hd.setTinhTrang(0);
+            qLHDService.createHD(hd);
+            addrowHD();
+            addrowHDCT();
+            addrowHDCT1();
+            addrowHD();
+            JOptionPane.showMessageDialog(rootPane, "Tạo Hóa Đơn Thành Công");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Lỗi");
+
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtTienKhachDuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTienKhachDuaActionPerformed
@@ -1063,16 +1068,98 @@ public class BanHang extends javax.swing.JFrame {
         String tienThua2 = String.valueOf(tienThua);
         txtTienThua.setText(tienThua2);
     }//GEN-LAST:event_txtTienKhachDuaActionPerformed
-
+    public void clearHD() {
+        txtMaHD.setText("");
+        txtNgayTao.setText("");
+        txtTenNV.setText("");
+        txtTienThua.setText("");
+        txtTongTien.setText("");
+        txtTienKhachDua.setText("");
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        int row = tbHoaDon1.getSelectedRow();
-        Integer maHD = (Integer) tbHoaDon1.getValueAt(row, 0);
-        qLHDService.updateHD(maHD);
-        addrowHD();
-        double tongTien = Double.parseDouble(txtTongTien.getText());
-        tongTienBanDuoc = tongTienBanDuoc + tongTien;
-        System.out.println(tongTienBanDuoc);
+        int yesno = JOptionPane.showConfirmDialog(rootPane, "Bạn Có Muốn In Hóa Đơn Không?");
+        if (yesno == JOptionPane.YES_OPTION) {
+            int row = tbHoaDon1.getSelectedRow();
+            String ban = (String) tbHoaDon1.getValueAt(row, 4);
+            String path = "";
+            JFileChooser j = new JFileChooser();
+            j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            int x = j.showSaveDialog(this);
+            if (x == JFileChooser.APPROVE_OPTION) {
+                path = j.getSelectedFile().getPath();
+
+            }
+            Document doc = new Document();
+            try {
+                PdfWriter.getInstance(doc, new FileOutputStream(path + "abc123.pdf"));
+                doc.open();
+                Paragraph paragraph1 = new Paragraph("Trà Sữa DarLing");
+                Paragraph paragraph2 = new Paragraph("Phiếu Thanh Toán");
+                Paragraph paragraph3 = new Paragraph("Bàn :" + ban);
+                paragraph1.setAlignment(Element.ALIGN_CENTER);
+                paragraph2.setAlignment(Element.ALIGN_LEFT);
+                paragraph3.setAlignment(Element.ALIGN_LEFT);
+
+                PdfPTable tbl = new PdfPTable(5);
+                tbl.addCell("Ten San Pham");
+                tbl.addCell("So Luong");
+                tbl.addCell("Don Gia");
+                tbl.addCell("Giam Gia");
+                tbl.addCell("Thanh Tien");
+                Integer maHD = (Integer) tbHoaDon1.getValueAt(row, 0);
+                List<HoaDonChiTiet> list = hDCTService.getHDCTByMaHD(maHD);
+                int tongTienCanTra = 0;
+                for (int i = 0; i < list.size(); i++) {
+                    double gia = list.get(i).getDONGIA().doubleValue();
+                    double giamGia = list.get(i).getSanPham().getKHUYENMAI().getSOTIENKM().doubleValue();
+                    double gia2 = Math.round(gia * 1000) / 1000;
+                    BigDecimal b = new BigDecimal(gia2);
+                    BigDecimal c = new BigDecimal(giamGia);
+                    int ThanhTien = (int) ((gia - giamGia) * list.get(i).getSOLUONG());
+                    String tien = String.valueOf(ThanhTien);
+                    String tenSP = list.get(i).getSanPham().getTENSP();
+                    Integer soLuong = list.get(i).getSOLUONG();
+                    tbl.addCell(tenSP);
+                    tbl.addCell(soLuong.toString());
+                    tbl.addCell(b.toString());
+                    tbl.addCell(c.toString());
+                    tbl.addCell(tien);
+                    tongTienCanTra = tongTienCanTra + ThanhTien;
+                }
+                Paragraph paragraph4 = new Paragraph("Tong Cong :                                              " + tongTienCanTra);
+                paragraph4.setAlignment(Element.ALIGN_CENTER);
+
+                doc.add(paragraph1);
+                doc.add(paragraph2);
+                doc.add(paragraph3);
+                doc.add(tbl);
+                doc.add(paragraph4);
+
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(BanHang.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DocumentException ex) {
+                Logger.getLogger(BanHang.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            doc.close();
+            Integer maHD = (Integer) tbHoaDon1.getValueAt(row, 0);
+            qLHDService.updateHD(maHD);
+            addrowHD();
+            double tongTien = Double.parseDouble(txtTongTien.getText());
+            tongTienBanDuoc = tongTienBanDuoc + tongTien;
+            JOptionPane.showMessageDialog(rootPane, "In Hóa Đơn Thành Công, Hóa Đơn Được Đưa Sang Màn Pha Chế");
+            clearHD();
+        } else {
+            int row = tbHoaDon1.getSelectedRow();
+            Integer maHD = (Integer) tbHoaDon1.getValueAt(row, 0);
+            qLHDService.updateHD(maHD);
+            addrowHD();
+            double tongTien = Double.parseDouble(txtTongTien.getText());
+            tongTienBanDuoc = tongTienBanDuoc + tongTien;
+            JOptionPane.showMessageDialog(rootPane, "Hóa Đơn Được Đưa Sang Màn Pha Chế");
+            clearHD();
+        }
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -1098,9 +1185,9 @@ public class BanHang extends javax.swing.JFrame {
         String tongTien = bd.toString();
         Integer tongTien2 = Integer.parseInt(tongTien);
         GiaoCaView g = new GiaoCaView(tongTien2, tGBD);
-        g.setVisible(true);
+        g.show();
         g.setLocationRelativeTo(null);
-        this.dispose();
+//        this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -1269,73 +1356,6 @@ public class BanHang extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jLabel3MouseClicked
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here: 
-        int row = tbHoaDon1.getSelectedRow();
-        String ban = (String) tbHoaDon1.getValueAt(row, 4);
-        String path = "";
-        JFileChooser j = new JFileChooser();
-        j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int x = j.showSaveDialog(this);
-        if (x == JFileChooser.APPROVE_OPTION) {
-            path = j.getSelectedFile().getPath();
-
-        }
-        Document doc = new Document();
-        try {
-
-            PdfWriter.getInstance(doc, new FileOutputStream(path + "abc123.pdf"));
-            doc.open();
-            Paragraph paragraph1 = new Paragraph("Trà Sữa DarLing");
-            Paragraph paragraph2 = new Paragraph("Phiếu Thanh Toán");
-            Paragraph paragraph3 = new Paragraph("Bàn :" + ban);
-            paragraph1.setAlignment(Element.ALIGN_CENTER);
-            paragraph2.setAlignment(Element.ALIGN_LEFT);
-            paragraph3.setAlignment(Element.ALIGN_LEFT);
-
-            PdfPTable tbl = new PdfPTable(5);
-            tbl.addCell("Ten San Pham");
-            tbl.addCell("So Luong");
-            tbl.addCell("Don Gia");
-            tbl.addCell("Giam Gia");
-            tbl.addCell("Thanh Tien");
-            Integer maHD = (Integer) tbHoaDon1.getValueAt(row, 0);
-            List<HoaDonChiTiet> list = hDCTService.getHDCTByMaHD(maHD);
-            int tongTienCanTra = 0;
-            for (int i = 0; i < list.size(); i++) {
-                double gia = list.get(i).getDONGIA().doubleValue();
-                double giamGia = list.get(i).getSanPham().getKHUYENMAI().getSOTIENKM().doubleValue();
-                double gia2 = Math.round(gia * 1000) / 1000;
-                BigDecimal b = new BigDecimal(gia2);
-                BigDecimal c = new BigDecimal(giamGia);
-                int ThanhTien = (int) ((gia - giamGia) * list.get(i).getSOLUONG());
-                String tien = String.valueOf(ThanhTien);
-                String tenSP = list.get(i).getSanPham().getTENSP();
-                Integer soLuong = list.get(i).getSOLUONG();
-                tbl.addCell(tenSP);
-                tbl.addCell(soLuong.toString());
-                tbl.addCell(b.toString());
-                tbl.addCell(c.toString());
-                tbl.addCell(tien);
-                tongTienCanTra = tongTienCanTra + ThanhTien;
-            }
-            Paragraph paragraph4 = new Paragraph("Tong Cong :                                              " + tongTienCanTra);
-            paragraph4.setAlignment(Element.ALIGN_CENTER);
-
-            doc.add(paragraph1);
-            doc.add(paragraph2);
-            doc.add(paragraph3);
-            doc.add(tbl);
-            doc.add(paragraph4);
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(BanHang.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (DocumentException ex) {
-            Logger.getLogger(BanHang.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        doc.close();
-    }//GEN-LAST:event_jButton9ActionPerformed
-
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         // TODO add your handling code here:
         Integer int1 = Integer.valueOf(lblMaNVLay.getText());
@@ -1392,7 +1412,6 @@ public class BanHang extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

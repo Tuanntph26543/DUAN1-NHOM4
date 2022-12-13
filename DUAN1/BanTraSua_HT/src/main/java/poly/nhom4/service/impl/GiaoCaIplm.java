@@ -42,4 +42,9 @@ public class GiaoCaIplm implements GiaoCaService {
         return giaoCaRepository.updateGC1(gc);
     }
 
+    @Override
+    public boolean updateGC3(GiaoCa gc) {
+        return giaoCaRepository.updateGC3(gc);
+    }
+
 }

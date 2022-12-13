@@ -5,12 +5,12 @@
 package poly.nhom4.repository;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.util.List;
 import org.hibernate.query.Query;
 import org.hibernate.Session;
 import poly.nhom4.domainmodel.HoaDon;
 import poly.nhom4.hibernateconfig.HibernateUtil;
-
 
 /**
  *
@@ -36,6 +36,17 @@ public class TKDTRepository {
                 + " and p.hoaDon.tinhTrang != 1 and p.hoaDon.tinhTrang != 0 group by p.hoaDon.ngayTao";
         Query query = session.createQuery(sql);
         List<BigDecimal> list1 = query.list();
+        return list1;
+    }
+
+    public List<Object[]> getAllDT2(Date ngayDau, Date ngayCuoi) {
+        session = HibernateUtil.getFACTORY().openSession();
+        String sql = "select p.hoaDon.ngayTao, sum((p.DONGIA-p.sanPham.KHUYENMAI.SOTIENKM)*p.SOLUONG) as DOANHTHU\n"
+                + "from HoaDonChiTiet p where p.hoaDon.tinhTrang != 1 and p.hoaDon.tinhTrang != 0 and p.hoaDon.ngayTao>=:NGAYDAU and p.hoaDon.ngayTao<=:NGAYCUOI  group by p.hoaDon.ngayTao Order by p.hoaDon.ngayTao desc";
+        Query query = session.createQuery(sql);
+        query.setParameter("NGAYDAU", ngayDau);
+        query.setParameter("NGAYCUOI", ngayCuoi);
+        List<Object[]> list1 = query.list();
         return list1;
     }
 

@@ -6,6 +6,7 @@ package poly.nhom4.view;
 
 import java.math.BigDecimal;
 import java.util.List;
+import javax.swing.JOptionPane;
 import poly.nhom4.domainmodel.GiaoCa;
 import poly.nhom4.service.GiaoCaService;
 import poly.nhom4.service.impl.GiaoCaIplm;
@@ -91,6 +92,11 @@ public class GiaoCaView extends javax.swing.JFrame {
         jLabel7.setText("Tiền Chủ Thu:");
 
         jButton1.setText("Reset Ca");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Xác Nhận");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -198,20 +204,44 @@ public class GiaoCaView extends javax.swing.JFrame {
         // TODO add your handling code here:
         GiaoCa gc = new GiaoCa();
         gc.setTHOIGIANGIAOCA(java.time.LocalDateTime.now());
-        String tien = String.valueOf(tienBanDuoc);
+        String tien = String.valueOf(lblTongTien.getText());
         double db = Double.parseDouble(tien);
         BigDecimal bd = new BigDecimal(db);
         Integer maCa = Integer.parseInt(lblCa.getText());
         gc.setMACA(maCa);
         gc.setTONGTIENTRONGCA(bd);
         gc.setTRANGTHAI(0);
-        giaoCaService.updateGC(gc);    
+        giaoCaService.updateGC(gc);
         DangNhapForm bh = new DangNhapForm();
         bh.show(true);
         bh.setLocationRelativeTo(null);
         this.dispose();
-  
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        GiaoCa gc = new GiaoCa();
+        gc.setTHOIGIANRESET(java.time.LocalDateTime.now());
+        String tien = String.valueOf(tienBanDuoc);
+        double db = Double.parseDouble(tien) - 1000000;
+        BigDecimal bd = new BigDecimal(db);
+        gc.setTONGTIENRUT(bd);
+        Integer maCa = Integer.parseInt(lblCa.getText());
+        gc.setMACA(maCa);
+        giaoCaService.updateGC3(gc);
+        List<GiaoCa> list = giaoCaService.getGiaoCaMoiNhat();
+        int maCa1 = list.get(0).getMACA();
+        double db1 = list.get(0).getTIENBANDAU().doubleValue();
+        BigDecimal tienBD = new BigDecimal(db1);
+        String st = tienBD.toString();
+        String maCa2 = String.valueOf(maCa1);
+        String tienChuThu = String.valueOf(db);
+        lblCa.setText(maCa2);
+        lblTienBD.setText(st);
+        lblTongTien.setText("1000000");
+        lblTienChuThu.setText(tienChuThu);
+        JOptionPane.showMessageDialog(rootPane, "Reset Ca Thành Công");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

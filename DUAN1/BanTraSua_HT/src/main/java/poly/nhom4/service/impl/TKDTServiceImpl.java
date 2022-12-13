@@ -5,6 +5,7 @@
 package poly.nhom4.service.impl;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.util.List;
 import poly.nhom4.repository.TKDTRepository;
 import poly.nhom4.service.TKDTService;
@@ -49,6 +50,11 @@ public class TKDTServiceImpl implements TKDTService {
     @Override
     public List<String> getSeller() {
         return repo.getSeller();
+    }
+
+    @Override
+    public List<Object[]> getAllDT2(Date ngayDau, Date ngayCuoi) {
+        return repo.getAllDT2(ngayDau, ngayCuoi);
     }
 
 }

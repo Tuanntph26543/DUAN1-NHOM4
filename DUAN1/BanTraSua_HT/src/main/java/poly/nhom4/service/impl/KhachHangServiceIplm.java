@@ -28,7 +28,11 @@ public class KhachHangServiceIplm implements KhachHangService {
 
     @Override
     public KhachHang getKhBySdt(String sdt) {
-        return khachHangRepository.getKhBySdt(sdt);
+        try {
+                    return khachHangRepository.getKhBySdt(sdt);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     @Override
@@ -39,6 +43,11 @@ public class KhachHangServiceIplm implements KhachHangService {
     @Override
     public List<KhachHang> getAll() {
         return khachHangRepository.getAll();
+    }
+
+    @Override
+    public boolean updateKH(int maKH,KhachHang kh) {
+        return khachHangRepository.updateKH(maKH,kh);
     }
 
 }

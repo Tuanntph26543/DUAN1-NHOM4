@@ -145,7 +145,7 @@ public class XacNhanCa extends javax.swing.JFrame {
         gc.setTRANGTHAI(0);
         gc.setUsertt(userTTService.getUSerByMaNV(ma1));
         giaoCaService.createGC(gc);
-        BanHang bh = new BanHang(ma1);
+        BanHangNhanVien bh = new BanHangNhanVien(ma1);
         bh.show();
         bh.setLocationRelativeTo(null);
         this.dispose();

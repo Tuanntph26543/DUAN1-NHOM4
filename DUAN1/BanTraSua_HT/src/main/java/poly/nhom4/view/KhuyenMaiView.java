@@ -118,7 +118,7 @@ public class KhuyenMaiView extends javax.swing.JFrame {
         model.setRowCount(0);
         for (SanPhamReponse s : list) {
             model.addRow(new Object[]{
-                s.getMaSp(), s.getMaKM(), s.getTenSp()
+                s.getMaSp(), khuyenMaiService.getTenKM(s.getMaKM()), s.getTenSp()
             });
         }
     }
@@ -194,6 +194,7 @@ public class KhuyenMaiView extends javax.swing.JFrame {
                             if (date.compareTo(Timestamp.valueOf(km.getNgayKT())) > 0) {
                                 km.setTrangThai(0);
                                 khuyenMaiService.update(km);
+                                spser.soOut3(km.getMaKM());
                             }
                         });
                         showData(new KhuyenMaiServiceImpl().getAll());
@@ -338,6 +339,7 @@ public class KhuyenMaiView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(153, 255, 204));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel16.setBackground(new java.awt.Color(153, 255, 204));
@@ -369,12 +371,12 @@ public class KhuyenMaiView extends javax.swing.JFrame {
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton8)
-                .addGap(18, 18, 18)
-                .addComponent(lblMaNVLay, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(lblMaNVLay, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblThongTinDn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -671,6 +673,7 @@ public class KhuyenMaiView extends javax.swing.JFrame {
 
         jPanel2.add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 90, 410, 330));
 
+        jTabbedPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTabbedPane1.setFont(new java.awt.Font("Source Sans Pro SemiBold", 0, 12)); // NOI18N
 
         jPanel20.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -735,7 +738,7 @@ public class KhuyenMaiView extends javax.swing.JFrame {
                         .addGap(37, 37, 37)
                         .addComponent(cbLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(93, 93, 93))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1091, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1083, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel20Layout.setVerticalGroup(
@@ -748,7 +751,7 @@ public class KhuyenMaiView extends javax.swing.JFrame {
                     .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnTim))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
                 .addGap(23, 23, 23))
         );
 
@@ -759,7 +762,7 @@ public class KhuyenMaiView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã SP", "Mã KM", "Tên SP"
+                "Mã SP", "Tên KM", "Tên SP"
             }
         ));
         jScrollPane3.setViewportView(tbSPKM);
@@ -794,7 +797,7 @@ public class KhuyenMaiView extends javax.swing.JFrame {
                 .addComponent(btnLoad)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
+                .addContainerGap(38, Short.MAX_VALUE)
                 .addComponent(chkReset)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1240,7 +1243,7 @@ public class KhuyenMaiView extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KhuyenMaiView(1).setVisible(true);
+                new KhuyenMaiView(2).setVisible(true);
             }
         });
     }

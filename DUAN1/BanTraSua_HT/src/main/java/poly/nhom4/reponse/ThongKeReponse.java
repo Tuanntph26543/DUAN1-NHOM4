@@ -62,5 +62,32 @@ public class ThongKeReponse {
         jpanelItem1.validate();
         jpanelItem1.repaint();
     }
+    public void Char2(List<Object[]> list,JPanel jpanelItem1) {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        if (list != null) {
+
+            for (Object[] x : list) {
+                ThongKee tk = new ThongKee();
+                tk.setNgayTao((Date) x[0]);
+               
+                BigDecimal big = (BigDecimal) x[1];
+                tk.setDoanhThu(big);
+                Double db = tk.getDoanhThu().doubleValue();
+                dataset.addValue(db, "Doanh thu", tk.getNgayTao());
+            }
+        }
+        JFreeChart barChart = ChartFactory.createBarChart(
+                "Biểu đồ thống kê doanh thu ".toUpperCase(),
+                "Thời gian", "Doanh Thu",
+                dataset, PlotOrientation.VERTICAL, false, true, false);
+        ChartPanel chartPanel = new ChartPanel(barChart);
+        chartPanel.setPreferredSize(new Dimension(jpanelItem1.getWidth(), 321));
+
+        jpanelItem1.removeAll();
+        jpanelItem1.setLayout(new CardLayout());
+        jpanelItem1.add(chartPanel);
+        jpanelItem1.validate();
+        jpanelItem1.repaint();
+    }
 
 }

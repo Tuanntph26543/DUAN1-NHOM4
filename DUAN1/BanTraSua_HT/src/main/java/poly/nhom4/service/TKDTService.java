@@ -5,8 +5,8 @@
 package poly.nhom4.service;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.util.List;
-
 
 /**
  *
@@ -25,4 +25,7 @@ public interface TKDTService {
     List< Object[]> getSP();
 
     List<String> getSeller();
+
+    List<Object[]> getAllDT2(Date ngayDau, Date ngayCuoi);
+
 }

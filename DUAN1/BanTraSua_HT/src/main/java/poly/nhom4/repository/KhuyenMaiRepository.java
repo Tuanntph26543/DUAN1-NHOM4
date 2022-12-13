@@ -23,7 +23,7 @@ public class KhuyenMaiRepository {
     private String fromTable = "from KhuyenMai";
 
     public List<KhuyenMai> getAll() {
-       String sql = "from KhuyenMai WHERE MAKM !=10";
+       String sql = "from KhuyenMai WHERE MAKM !=11";
         session = HibernateUtil.getFACTORY().openSession();
         Query query = session.createQuery(sql, KhuyenMai.class);
         List<KhuyenMai> list = query.getResultList();
@@ -57,7 +57,7 @@ public class KhuyenMaiRepository {
     }
 
     public List<KhuyenMai> getAllByTT() {
-        String sql = "from KhuyenMai WHERE TRANGTHAI=1 and MAKM !=10";
+        String sql = "from KhuyenMai WHERE TRANGTHAI=1 and MAKM !=11";
         Session session = HibernateUtil.getFACTORY().openSession();
         Query query = session.createQuery(sql, KhuyenMai.class);
         List<KhuyenMai> lists = query.getResultList();
@@ -148,6 +148,14 @@ public class KhuyenMaiRepository {
         query.setParameter("MAKM", maKM);
         KhuyenMai lists = (KhuyenMai) query.getSingleResult();
         return lists.getSOTIENKM();
+    }
+public String getTenKM(int maKM) {
+        String fromTable2 = "FROM KhuyenMai Where MAKM =:MAKM";
+        Session session2 = HibernateUtil.getFACTORY().openSession();
+        Query query = session2.createQuery(fromTable2, KhuyenMai.class);
+        query.setParameter("MAKM", maKM);
+        KhuyenMai lists = (KhuyenMai) query.getSingleResult();
+        return lists.getTENKM();
     }
 
     public static void main(String[] args) {

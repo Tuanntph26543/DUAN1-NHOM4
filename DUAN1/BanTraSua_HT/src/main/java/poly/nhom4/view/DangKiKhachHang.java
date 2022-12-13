@@ -5,6 +5,7 @@
 package poly.nhom4.view;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import poly.nhom4.domainmodel.KhachHang;
 import poly.nhom4.service.KhachHangService;
@@ -15,27 +16,31 @@ import poly.nhom4.service.impl.KhachHangServiceIplm;
  * @author ACER
  */
 public class DangKiKhachHang extends javax.swing.JFrame {
-private final KhachHangService khachHangService;
+
+    private final KhachHangService khachHangService;
     DefaultTableModel defaultTableModel;
+
     /**
      * Creates new form DangKiKhachHang
      */
     public DangKiKhachHang() {
         initComponents();
-        khachHangService=new KhachHangServiceIplm();
+        khachHangService = new KhachHangServiceIplm();
         addrow();
     }
-  public void addrow() {
+
+    public void addrow() {
         List<KhachHang> list = khachHangService.getAll();
         defaultTableModel = (DefaultTableModel) tbKH.getModel();
         defaultTableModel.setRowCount(0);
         for (KhachHang x : list) {
             defaultTableModel.addRow(new Object[]{
-                x.getMAKH(),x.getTENKH(),x.getSDT(),x.getDIACHI()
+                x.getMAKH(), x.getTENKH(), x.getSDT(), x.getDIACHI()
             });
         }
 
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,6 +97,11 @@ private final KhachHangService khachHangService;
         });
 
         jButton2.setText("Cập Nhập");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Thoát");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -106,28 +116,26 @@ private final KhachHangService khachHangService;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDiaChi, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                            .addComponent(txtSDT)
-                            .addComponent(txtHoTen)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addGap(53, 53, 53)))))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3)
+                            .addComponent(txtHoTen, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                            .addComponent(txtSDT)
+                            .addComponent(txtDiaChi)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jButton2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,12 +169,26 @@ private final KhachHangService khachHangService;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        KhachHang kh=new KhachHang();
-        kh.setSDT(txtSDT.getText());
-        kh.setDIACHI(txtDiaChi.getText());
-        kh.setTENKH(txtHoTen.getText());
-        khachHangService.createKH(kh);
-        addrow();
+        String P_SDT = "^([0-9\\.]{10})$";
+        try {
+            if (!(txtSDT.getText()).matches(P_SDT)) {
+                JOptionPane.showMessageDialog(rootPane, "Nhập Số Điện Thoai Hợp Lệ");
+            } else {
+                KhachHang kh = new KhachHang();
+                kh.setSDT(txtSDT.getText());
+                kh.setDIACHI(txtDiaChi.getText());
+                kh.setTENKH(txtHoTen.getText());
+                khachHangService.createKH(kh);
+                addrow();
+                JOptionPane.showMessageDialog(rootPane, "Thêm Thành Công");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Thất Bại");
+
+        }
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtDiaChiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaChiActionPerformed
@@ -177,6 +199,18 @@ private final KhachHangService khachHangService;
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int row = tbKH.getSelectedRow();
+        int maKH = (int) tbKH.getValueAt(row, 0);
+        KhachHang kh = new KhachHang();
+        kh.setTENKH(txtHoTen.getText());
+        kh.setSDT(txtSDT.getText());
+        kh.setDIACHI(txtDiaChi.getText());
+        khachHangService.updateKH(maKH, kh);
+        addrow();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

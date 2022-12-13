@@ -16,25 +16,27 @@ import poly.nhom4.hibernateconfig.HibernateUtil;
  * @author ACER
  */
 public class KhachHangRepository {
+
     public String getTenKhBySdt(String sdt) {
         Session session = HibernateUtil.getFACTORY().openSession();
         Query query = session.createQuery("From KhachHang Where SDT =: SDT");// truy vấn trên entity(HQL)
         query.setParameter("SDT", sdt);
         KhachHang kh = (KhachHang) query.getSingleResult();
-        String list1=kh.getTENKH();
+        String list1 = kh.getTENKH();
         return list1;
     }
-    
-     public KhachHang getKhBySdt(String sdt) {
+
+    public KhachHang getKhBySdt(String sdt) {
         Session session = HibernateUtil.getFACTORY().openSession();
         Query query = session.createQuery("From KhachHang Where SDT =: SDT");// truy vấn trên entity(HQL)
         query.setParameter("SDT", sdt);
         KhachHang kh = (KhachHang) query.getSingleResult();
         return kh;
     }
-     public boolean createKH(KhachHang kh){
-         Transaction transaction = null;
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+
+    public boolean createKH(KhachHang kh) {
+        Transaction transaction = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
             session.save(kh);
             transaction.commit();
@@ -42,12 +44,32 @@ public class KhachHangRepository {
         } catch (Exception e) {
         }
         return false;
-     }
-     
-      public List<KhachHang> getAll() {
+    }
+
+    public boolean updateKH(int maKH, KhachHang kh) {
+        Transaction transaction = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            org.hibernate.query.Query query = session.createQuery("update KhachHang set TENKH = :TENKH,SDT=:SDT,DIACHI=:DIACHI Where MAKH =:MAKH");
+            query.setParameter("TENKH", kh.getTENKH());
+            query.setParameter("SDT", kh.getSDT());
+            query.setParameter("DIACHI", kh.getDIACHI());
+            query.executeUpdate();
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+
+        }
+        return false;
+    }
+public List<KhachHang> getAll() {
         String fromTable = "FROM KhachHang";
         Session session = HibernateUtil.getFACTORY().openSession();
-        Query query = session.createQuery(fromTable, KhachHang.class);
+        Query
+
+query = session.createQuery(fromTable, KhachHang.class  
+
+);
         List<KhachHang> lists = query.getResultList();
         return lists;
     }

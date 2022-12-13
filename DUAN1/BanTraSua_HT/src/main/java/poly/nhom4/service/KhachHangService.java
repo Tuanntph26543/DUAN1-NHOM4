@@ -16,4 +16,5 @@ public interface KhachHangService {
     KhachHang getKhBySdt(String sdt);
     boolean createKH(KhachHang kh);
     List<KhachHang> getAll();
+    boolean updateKH(int maKH,KhachHang kh);
 }

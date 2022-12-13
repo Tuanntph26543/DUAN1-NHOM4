@@ -21,5 +21,6 @@ public interface GiaoCaService {
     boolean updateGC(GiaoCa gc);
 
     boolean updateGC1(GiaoCa gc);
+    boolean updateGC3(GiaoCa gc);
 
 }

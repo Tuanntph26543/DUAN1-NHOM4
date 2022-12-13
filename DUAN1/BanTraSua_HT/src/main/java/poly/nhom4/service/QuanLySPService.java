@@ -39,4 +39,6 @@ public interface QuanLySPService {
     boolean soOut(int maSP);
 
     boolean soOut2();
+        boolean soOut3(int maKM);
+
 }

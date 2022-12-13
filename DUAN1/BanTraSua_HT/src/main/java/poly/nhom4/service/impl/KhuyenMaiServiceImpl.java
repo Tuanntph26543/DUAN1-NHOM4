@@ -140,4 +140,9 @@ public class KhuyenMaiServiceImpl implements KhuyenMaiService {
         return repo.getMa(soTienKM);
     }
 
+    @Override
+    public String getTenKM(int maKM) {
+        return repo.getTenKM(maKM) ;
+    }
+
 }

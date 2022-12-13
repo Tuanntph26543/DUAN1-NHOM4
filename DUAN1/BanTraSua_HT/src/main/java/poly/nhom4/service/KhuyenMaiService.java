@@ -38,4 +38,5 @@ public interface KhuyenMaiService {
     KhuyenMai getKMByMa(Integer maKM);
 
     int getMa(BigDecimal soTienKM);
+     String getTenKM(int maKM);
 }

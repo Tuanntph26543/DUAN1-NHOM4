@@ -4,6 +4,7 @@
  */
 package poly.nhom4.repository;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
@@ -18,7 +19,7 @@ import poly.nhom4.hibernateconfig.HibernateUtil;
  * @author ACER
  */
 public class GiaoCaRepository {
-
+    
     public List<GiaoCa> getGiaoCaMoiNhat() {
         String fromTable = "FROM GiaoCa order by THOIGIANNHANCA DESC";
         Session session = HibernateUtil.getFACTORY().openSession();
@@ -26,7 +27,7 @@ public class GiaoCaRepository {
         List<GiaoCa> list = query.getResultList();
         return list;
     }
-
+    
     public boolean createGC(GiaoCa gc) {
         Transaction transaction = null;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
@@ -38,7 +39,7 @@ public class GiaoCaRepository {
         }
         return false;
     }
-
+    
     public boolean updateGC(GiaoCa gc) {
         Transaction transaction = null;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
@@ -54,6 +55,7 @@ public class GiaoCaRepository {
             return true;
         }
     }
+    
     public boolean updateGC1(GiaoCa gc) {
         Transaction transaction = null;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
@@ -68,7 +70,8 @@ public class GiaoCaRepository {
             return true;
         }
     }
-     public boolean updateGC2(GiaoCa gc) {
+    
+    public boolean updateGC2(GiaoCa gc) {
         Transaction transaction = null;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
@@ -82,8 +85,26 @@ public class GiaoCaRepository {
             return true;
         }
     }
+    
+    public boolean updateGC3(GiaoCa gc) {
+        Transaction transaction = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            org.hibernate.query.Query query = session.createQuery("update GiaoCa"
+                    + " set THOIGIANRESET = :THOIGIANRESET,MAQUANLIRESET=2,TONGTIENRUT=:TONGTIENRUT,TONGTIENTRONGCA=:TONGTIENTRONGCA"
+                    + " where MACA = :MACA");
+            query.setParameter("THOIGIANRESET", gc.getTHOIGIANRESET());
+            query.setParameter("TONGTIENRUT", gc.getTONGTIENRUT());
+            query.setParameter("TONGTIENTRONGCA", new BigDecimal(1000000));
+            query.setParameter("MACA", gc.getMACA());
+            query.executeUpdate();
+            transaction.commit();
+            return true;
+        }
+    }
+    
     public static void main(String[] args) {
-        List<GiaoCa> list=new GiaoCaRepository().getGiaoCaMoiNhat();
+        List<GiaoCa> list = new GiaoCaRepository().getGiaoCaMoiNhat();
         for (GiaoCa x : list) {
             System.out.println(x);
         }

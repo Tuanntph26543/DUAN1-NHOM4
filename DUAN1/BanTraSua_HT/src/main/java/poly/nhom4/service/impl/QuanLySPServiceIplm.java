@@ -135,4 +135,9 @@ public class QuanLySPServiceIplm implements QuanLySPService {
        return sanPhamRepository.soOut2();
     }
 
+    @Override
+    public boolean soOut3(int maKM) {
+       return sanPhamRepository.soOut3(maKM);
+    }
+
 }
